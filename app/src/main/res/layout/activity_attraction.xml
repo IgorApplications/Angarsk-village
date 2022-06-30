@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/attraction"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".attractions.AttractionActivity">
+
+    <FrameLayout
+        android:id="@+id/background_scene_root"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+        <include layout="@layout/first_background"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/chocolate"
+            android:src="@drawable/ic_back_button"
+            android:onClick="goToBack"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/chocolate"
+            android:drawableRight="@drawable/ic_description"
+            android:text="@string/description"
+            android:onClick="showDescription"/>
+
+        <Button
+            android:id="@+id/voice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/chocolate"
+            android:drawableRight="@drawable/ic_voice_off"
+            android:layout_marginLeft="3dp"
+            android:text="@string/listen"
+            android:onClick="playSound"/>
+
+    </LinearLayout>
+
+    <com.iapp.angara.ui.NavigateImageView
+        android:id="@+id/navigate_left"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:visibility="invisible"
+        android:scaleX="-1"
+        android:src="@drawable/ic_navigate_next"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:onClick="moveLeft"/>
+
+    <com.iapp.angara.ui.NavigateImageView
+        android:id="@+id/navigate_right"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:visibility="invisible"
+        android:src="@drawable/ic_navigate_next"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="moveRight"/>
+
+    <FrameLayout
+        android:id="@+id/blackout_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/description_scene_root"
+        android:layout_width="450dp"
+        android:layout_height="605dp"
+        android:layout_margin="5dp"
+        android:layout_centerInParent="true">
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name" translatable="true">Angarsk village</string>
+
+    <!-- strings of Splash Screen -->
+
+    <string name="company_name" translatable="true">
+        <![CDATA[ <b><font color=#ff0000>write</b>Igor<b><font color=#0000ff>text</b>Applications]]>
+    </string>
+
+    <!-- strings of Menu Activity -->
+
+    <string name="description_app_name" translatable="true">architectural ethnographic museum</string>
+    <string name="map_mode" translatable="true">Map mode</string>
+    <string name="list_mode" translatable="true">List mode</string>
+    <string name="forum" translatable="true">Forum</string>
+    <string name="unavailable" translatable="false">Temporarily unavailable due to platform rules</string>
+
+    <!-- strings of Map Activity -->
+
+    <string name="prison" translatable="true">Prison</string>
+    <string name="fourth_manor" translatable="true">Fourth manor</string>
+    <string name="church_archangel" translatable="true">Church of St. Michel the Archangel</string>
+    <string name="blacksmith" translatable="true">Blacksmith</string>
+
+    <!-- strings of List Activity -->
+
+    <string name="museum_objects" translatable="true">Museum objects</string>
+
+    <!-- strings of Chat Activity -->
+
+    <string name="message_field_hint" translatable="true">enter text here</string>
+    <string name="login_failed" translatable="true">Error when logging into your account</string>
+    <string name="min_characters_message" translatable="true">Message must exceed than 20 characters</string>
+    <string name="max_characters_message" translatable="true">Message must not exceed 200 characters</string>
+    <string name="accept" translatable="true">accept</string>
+    <string name="wrong_message" translatable="true">Wrong message</string>
+    <string name="message_log_out" translatable="true">Are you sure want to log out of your account?</string>
+    <string name="yes" translatable="true">yes</string>
+    <string name="no" translatable="true">no</string>
+    <string name="log_out_of_account" translatable="true">Log out of account</string>
+    <string name="less_minute" translatable="true">less than a minute</string>
+    <string name="minutes_ago" translatable="true">minutes ago</string>
+
+    <!-- strings of Attraction Activity -->
+    <string name="description" translatable="true">Description</string>
+    <string name="listen" translatable="true">Listen</string>
+
+    <string name="prison_description" translatable="true">
+        \t\t\tThe prison had a square shape with a side of thirty fathoms, with four towers at the corners. Located in a rather flat area, it occupied, meanwhile, a very convenient position - not far from the confluence of the Oka River with the Angara. Rivers, fertile arable land and rich surrounding forests contributed to the transformation of a small fortification into a developed settlement that lasted more than three centuries. Favorable conditions for the establishment of economic activities around the prison were repeatedly noted by its founders and clerks, and the fact that there were "many arable lands" near the prison did not go unnoticed - the Bratsk prison soon became a stronghold in the process of further development of the Baikal region.\n
+        \t\t\tDespite all the similarities with the towers of other Siberian fortresses, the towers of the Bratsk prison have one significant feature: in addition to defensive ones, from the very beginning they served as living quarters. This division of functions was clearly reflected in the structure of the towers and their structural design. First, the difference between the towers themselves should be especially noted. This difference concerns the method of cutting (laying) the crowns of the log house. In the northwestern tower, the groove was cut in the upper part of each crown, and in the southwestern tower, in the lower part, in a manner more common in Russian wooden architecture of the 16th-17th centuries. Today we have only a few monuments of wooden architecture, the log cabins of which are built in a more ancient way - with a groove in the upper part of the crown. This ancient method turned out to be impractical, and therefore not widely used. The fact is that such a groove, located in the upper part of the crown, was a kind of tray and water, getting into it, caused the rapid decay of the logs.\n
+        \t\t\tThe second difference is already characteristic of both fraternal towers and concerns the structure of the lower part of their log cabins. The first floors of the towers were isolated from the second and were intended for the Cossacks. Moreover, these towers were from the very beginning of their construction. The first floor of the towers is insulated (a layer of moss is laid between the crowns), but the second is not. Interfloor overlap is a solid log flooring, insulated with clay and a layer of earth. Inside the huts there were stoves heated in black. We know from many written sources that various functions, including military-defensive and residential, were combined in the towers of wooden fortresses. But if we know about other fortresses only from documents, then the towers of the Bratsk prison demonstrate this themselves, and this is their enduring value and main feature.
+    </string>
+
+    <string name="fourth_manor_description" translatable="true">
+        \t\t\tThe fourth estate is an analogue of the Nepomiluev estate from the village of Nizhnyaya Shamanka, Ust-Ilimsk region. In the hut and under the sheds, the exposition "Life and way of life of the population of the Angara region in the middle of the 20th century" is deployed.\n
+        \t\t\tThe three-yard estate of Nepomiluev was built on the steep coast of the island. The link house with three windows and single-leaf rather simple architraves was traditionally placed facing the street. To the right of the hut there was a clean courtyard with a “red” porch and a “red” gate. According to the hostess of the estate, guests were received in a clean courtyard, firewood and potatoes were brought to the utility yard.\n
+        \t\t\tThe three-part layout of the estate is of great interest. A clean yard with a bathhouse, a barn and a shed limits the estate on the right; to the left of the hut there are two yards: in the center is a utility yard with two barns, and a cattle yard with a flock with a “lead” and a canopy that limits the estate on the left. All three courtyards are stretched along a narrow unpaved road, behind the road, in front of the house, there were vegetable gardens, behind them - the next street. The estate was located on a narrow strip of land between the road and a steep, steep bank.\n
+        \t\t\tThe estate clearly fit into the natural landscape, located on the steep, precipitous coast of the Shaman Island. Beyond the barnyard, the road slowly descended to the river. From the household to the clean yard from the side of the river, one could get through a path located directly above the cliff.\n
+        \t\t\tAccording to the design scheme and construction techniques, all the buildings of this estate were made in the folk style of the Angara peasant architecture, which preserved the architectural and constructive techniques of ancient Russian wooden architecture. Mighty "helmets", "outlets" that support roof overhangs, remnants of "streams", "magpies", "hens" are typical for special roofs. A clear structure, strict construction of barns, a winter hut, which later became a bathhouse, the isolation of the estate from other residential complexes were the undoubted advantage of this monument.\n
+        \t\t\tThe new exposition, which tells about the way of life of the population of the Middle Angara region in the 40-50s of the XX century, makes it possible to more fully and comprehensively trace the further development of the Angara region up to the resettlement of residents in connection with the creation of reservoirs on the Angara.\n
+    </string>
+
+    <string name="church_archangel_description" translatable="true">
+        \t\t\tPreviously, in order to build a church, one had to obtain special permission from the clergy. Therefore, construction began later. It received its name in honor of the Holy Archangel Michael, who is one of the most revered Saints. In Orthodoxy, he is considered the intercessor of all warriors and is called the Archangel, which means the head of the holy army of Angels and Archangels. At first, the building was created as a prayer house, attributed to the Kirensky Spassky Cathedral, but in 1875, after the consecration, it received the status of a church.\n
+        \t\t\tUnfortunately, at the moment all the icons and the iconostasis are newly made. Part of the historic interior are sculptures of the apostles, made almost to their full height. This was done in order to convert the local population, the indigenous population of Siberia, to the Christian faith.\n
+        \t\t\tThe fact is that the native Siberians had their own prejudices and did not want to worship painted icons. Therefore, in the temple, especially for them, there were three-dimensional figures of saints, who were just the same and were considered an unconditional symbol of worship. They were very common in the Kirensky district. And, unfortunately, only one such sculpture has survived to our time. It is now kept in the Kirensk Museum. The architectural feature of this church has reached contemporaries almost unchanged.\n
+        \t\t\tThe church belongs to the Klet type, has a three-part department: a vestibule, a temple and an altar. The altar is separated from the temple by an iconostasis. This church has a two-row iconostasis. It has a local row and a deesis row. In the center are the "Royal Doors". Pass through which can only the clergy. Christian faith generally forbids women to enter the altar. Yes, and men can cross this border only with the permission of the priest.\n
+        \t\t\tIn 1910, it was decided to attach the bell tower to the church separately. It is built on four pillars and covered with a hipped roof. The main feature of ancient Russian architecture is the unusual two-tiered completion of the cupola covered with one row of wooden plowshares, that is, carved tiles that adorn the "dome" of the church.\n
+    </string>
+
+    <string name="blacksmith_description" translatable="true">
+        \t\t\tOne of the most interesting objects of the museum is the smithy. According to local residents, the age of this forge is the end of the 19th century. Well, for its intended purpose, it was used until the 50s of the last century. Unfortunately, during transportation, many details of the interior were lost - only the workbench and parts of the furnace remained.\n
+        \t\t\tForges were mainly set up in villages on the banks of rivers. It was very convenient, firstly, for the blacksmiths themselves. When they worked in the heat, it was very hot, the blacksmiths often sweated a lot and therefore often went out and dipped into the river.\n
+        \t\t\tThe smithy was built with two types of cutting - one part was cut down "in a paw", and the upper crowns were cut down "into a bowl". The roof is made of semi-logs, as they say, grooved. The exhibits of the blacksmithing exposition were collected in different villages, but mainly from the flood zone of the Ust-Ilimsk reservoir. In total, there are about a hundred of them, including quite rare ones, such as a forge, a vise, a vat.\n
+        \t\t\tThe hearth was considered the main part in the forge, this hearth is open, covered with clay as a fire safety. Well, fire safety is also here - the wall is plastered with clay.\n
+        \t\t\tThe blacksmith in the village was a respected and irreplaceable person. There might not have been a church parish and a priest, but there was always a farrier. Among other things, it was probably difficult to find a person in the village stronger than a blacksmith. The blacksmith had to be of remarkable physical strength! First, it was necessary to heat the iron in the fire, and then forge it on the anvil with the help of hammers.\n
+        \t\t\tThe forged product had to be hardened, for which it was lowered into a special vat. For sharpening finished tools or weapons, the master used a grindstone. Water was poured into a small recess under the grindstone, which increased its abrasive properties, while softening it, which made the process most efficient. Also in the forge room there was always a large oak barrel for storing coal, which was used to melt the forge. The horn is called open because there was no chimney here, the smoke went into the room itself and came out with the help of such a portage window, which was under the ceiling.\n
+    </string>
+
+</resources>

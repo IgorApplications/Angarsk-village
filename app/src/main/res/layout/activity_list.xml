@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.ListActivity"
+    android:background="@drawable/background_v">
+
+    <ScrollView
+        android:id="@+id/list_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <com.iapp.angara.ui.NavigateImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="@drawable/stroke"
+                android:src="@drawable/prison_list"
+                android:onClick="goToPrison"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:text="@string/prison"
+                android:layout_marginBottom="15dp"/>
+
+            <com.iapp.angara.ui.NavigateImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="@drawable/stroke"
+                android:src="@drawable/manor_fourth_list"
+                android:onClick="goToFourthManor"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:text="@string/fourth_manor"
+                android:layout_marginBottom="15dp"/>
+
+            <com.iapp.angara.ui.NavigateImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="@drawable/stroke"
+                android:src="@drawable/church_archangel_list"
+                android:onClick="goToChurchArchangel"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:text="@string/church_archangel"
+                android:layout_marginBottom="15dp"/>
+
+            <com.iapp.angara.ui.NavigateImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="@drawable/stroke"
+                android:src="@drawable/blacksmith_list"
+                android:layout_marginTop="15dp"
+                android:onClick="goToBlacksmith"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:text="@string/blacksmith"
+                android:layout_marginBottom="15dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/chocolate"
+        android:src="@drawable/ic_back_button"
+        android:onClick="goToMenu"/>
+
+</RelativeLayout>
