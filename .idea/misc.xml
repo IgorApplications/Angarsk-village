@@ -5,7 +5,27 @@
       <map>
         <entry key="..\:/Projects/Angara/app/src/main/res/layout/activity_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Projects/Angara/app/src/main/res/layout/list_item.xml" value="0.22826086956521738" />
-        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/list_item.xml" value="0.13994565217391305" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/drawable-anydpi/ic_back_button.xml" value="0.1775" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/drawable-anydpi/ic_log_out_button.xml" value="0.1775" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/drawable-anydpi/ic_music_off.xml" value="0.1775" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/drawable-anydpi/ic_send_button.xml" value="0.1775" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_attraction.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_chat.xml" value="0.264" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_log.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_menu.xml" value="0.264" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_moderation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_reports.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_reports_actvity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/empty.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/first_background.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/list_item.xml" value="0.4" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/list_item_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/list_item_mod_reports.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/list_item_moderation.xml" value="0.253125" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/list_item_reports.xml" value="0.253125" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/pin.xml" value="0.253125" />
       </map>
     </option>
   </component>

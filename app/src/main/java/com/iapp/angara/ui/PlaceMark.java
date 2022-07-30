@@ -33,10 +33,12 @@ public class PlaceMark {
     /** Marker name */
     private String text;
     /** Marker click listener */
-    private OnClickListener clickListener;
+    private OnActionListener clickListener;
     /** All markers listener
      * needed to save object from garbage collector */
     private MapObjectTapListener objectTapListener;
+    /** object ob the map */
+    private PlacemarkMapObject current;
 
     /**
      * The constructor is designed to create
@@ -84,7 +86,7 @@ public class PlaceMark {
     *  a callback when the marker is clicked
     * @param clickListener mark click listener
     * */
-    public void addOnClickListener(OnClickListener clickListener) {
+    public void addOnClickListener(OnActionListener clickListener) {
         this.clickListener = clickListener;
     }
 
@@ -93,16 +95,13 @@ public class PlaceMark {
      * instance and the map settings
      * @param mapView map data
      */
-
-    private PlacemarkMapObject current;
-
     public void add(MapView mapView) {
         current = mapView.getMap().getMapObjects().addPlacemark(point, ImageProvider.fromBitmap(getUpImage()));
 
         objectTapListener = (obj, tapPoint) -> {
             if (current.equals(obj)) {
                 if (text != null) Toast.makeText(activity, text, Toast.LENGTH_LONG).show();
-                if (clickListener != null) clickListener.onClick();
+                if (clickListener != null) clickListener.onAction();
             }
 
             return false;

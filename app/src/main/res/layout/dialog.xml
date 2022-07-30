@@ -5,8 +5,7 @@
     android:id="@+id/description"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dialog"
-    tools:context=".attractions.AttractionActivity">
+    android:background="@drawable/dialog">
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -37,12 +36,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="5dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
                     android:scaleX="0.9"
                     android:scaleY="0.9"
-                    android:src="@drawable/ic_close"
-                    android:onClick="closeDescription"/>
+                    android:src="@drawable/ic_close" />
 
             </RelativeLayout>
 
@@ -53,7 +51,8 @@
                 android:layout_below="@+id/header"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:autoLink="email"
+                android:textSize="18sp"/>
 
         </RelativeLayout>
 

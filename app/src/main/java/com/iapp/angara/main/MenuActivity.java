@@ -5,9 +5,10 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
@@ -17,10 +18,13 @@ import com.iapp.angara.util.Mode;
 import com.iapp.angara.util.Settings;
 import com.iapp.angara.util.SoundPlayer;
 
+import java.util.concurrent.Executors;
+
 public class MenuActivity extends AppCompatActivity {
 
     private static final String FILE_NAME = "settings";
     private static final String SETTING_MAIN_MUSIC_ON = "mainMusicOn";
+
     private static boolean applicationInit;
 
     private RelativeLayout menu;
@@ -32,6 +36,8 @@ public class MenuActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SplashScreen.installSplashScreen(this);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_menu);
 
         initApp();
@@ -55,10 +61,6 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void goToChat(View view) {
-        //TODO
-        Toast.makeText(this, getString(R.string.unavailable), Toast.LENGTH_LONG).show();
-        if (true) return;
-
         Settings.soundPlayer.getClick().play();
         Intent intent = new Intent(this, ChatActivity.class);
         startActivity(intent);
@@ -79,6 +81,9 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     @Override
+    public void finish() {}
+
+    @Override
     protected void onPause() {
         super.onPause();
         saveSetting(SETTING_MAIN_MUSIC_ON, Settings.mainMusicOn);
@@ -90,6 +95,7 @@ public class MenuActivity extends AppCompatActivity {
         if (!applicationInit) {
             Settings.mainMusicOn = getSetting(SETTING_MAIN_MUSIC_ON);
             Settings.soundPlayer = new SoundPlayer(this);
+            Settings.threadPool = Executors.newFixedThreadPool(3);
             if (Settings.mainMusicOn) {
                 Settings.soundPlayer.getMain().playConst();
             }

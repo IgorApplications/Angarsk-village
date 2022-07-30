@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reports"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/forum_background_v"
+    tools:context=".main.ReportsActivity">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#323232"
+            android:clickable="true">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_back_button"
+                android:onClick="goToChat"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/reports"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_input"
+            android:layout_below="@+id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/search_button">
+
+            <EditText
+                android:id="@+id/search_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:hint="@string/search_hint"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/search_button"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_search"
+            android:backgroundTint="@color/green"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/action_bar"
+            android:onClick="search"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list_of_reports"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/header"
+        android:divider="@android:color/transparent"
+        android:footerDividersEnabled="false"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        android:paddingBottom="20dp"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay">
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:background="#7F000000"
+        android:clickable="true">
+
+        <ProgressBar
+            android:id="@+id/pb_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:indeterminateDrawable="@drawable/progress_bar"
+            android:max="100" />
+    </RelativeLayout>
+
+</RelativeLayout>

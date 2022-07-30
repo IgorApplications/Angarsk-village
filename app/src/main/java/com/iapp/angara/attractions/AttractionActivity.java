@@ -12,6 +12,8 @@ import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -62,6 +64,7 @@ public class AttractionActivity extends AppCompatActivity {
     private int indexBackgroundLayout;
 
     private RelativeLayout backgroundLayout;
+    private Button description;
     private Button voice;
     private NavigateImageView navigateLeft;
     private NavigateImageView navigateRight;
@@ -78,6 +81,8 @@ public class AttractionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_attraction);
 
         initGraphics();
@@ -95,19 +100,6 @@ public class AttractionActivity extends AppCompatActivity {
 
         if (Settings.modeActivity == Mode.LIST) startActivity(new Intent(this, ListActivity.class));
         else startActivity(new Intent(this, MapActivity.class));
-    }
-
-    public void showDescription(View view) {
-        Settings.soundPlayer.getClick().play();
-        showDescriptionDialog();
-    }
-
-    public void closeDescription(View view) {
-        Settings.soundPlayer.getClick().play();
-
-        makeTransition(R.id.blackout_root, R.layout.empty);
-        makeTransition(R.id.description_scene_root, R.layout.empty);
-        descriptionDisplay = false;
     }
 
     public void playSound(View view) {
@@ -161,6 +153,14 @@ public class AttractionActivity extends AppCompatActivity {
         descriptionDisplay = true;
     }
 
+    private void closeDescription() {
+        Settings.soundPlayer.getClick().play();
+
+        makeTransition(R.id.blackout_root, R.layout.empty);
+        makeTransition(R.id.description_scene_root, R.layout.empty);
+        descriptionDisplay = false;
+    }
+
     private void moveBackground() {
         Pair<Integer, Integer> nextBackground = getNextBackgroundLayout();
         makeTransition(R.id.background_scene_root, nextBackground.second);
@@ -173,6 +173,7 @@ public class AttractionActivity extends AppCompatActivity {
     private void initDialogTextData() {
         NavigateImageView close = findViewById(R.id.close);
         close.setColorDown(Color.argb(155, 0, 0, 0));
+        close.setOnClickListener(v -> closeDescription());
 
         TextView titleView = findViewById(R.id.title);
         TextView descriptionView = findViewById(R.id.description_text);
@@ -187,6 +188,11 @@ public class AttractionActivity extends AppCompatActivity {
             backgroundLayout = findViewById(getNextBackgroundLayout().first);
             navigateLeft = findViewById(R.id.navigate_left);
             navigateRight = findViewById(R.id.navigate_right);
+            description = findViewById(R.id.description);
+            description.setOnClickListener(v -> {
+                Settings.soundPlayer.getClick().play();
+                showDescriptionDialog();
+            });
 
             initData();
             detector = new GestureDetectorCompat(this, new AttractionOnSwipeListener());

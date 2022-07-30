@@ -1,12 +1,6 @@
 <resources>
     <string name="app_name" translatable="true">Ангарская деревня</string>
 
-    <!-- strings of Splash Screen -->
-
-    <string name="company_name" translatable="true">
-        <![CDATA[ <b><font color=#ff0000>write</b>Igor<b><font color=#0000ff>text</b>Applications]]>
-    </string>
-
     <!-- strings of Menu Activity -->
 
     <string name="description_app_name" translatable="true">aрхитектурно-этнографичсекий музей </string>
@@ -30,9 +24,9 @@
 
     <string name="message_field_hint" translatable="true">введите текст здесь</string>
     <string name="login_failed" translatable="true">Ошибка при входе в аккаунт</string>
-    <string name="min_characters_message" translatable="true">Сообщение должно превышать 20 символов</string>
+    <string name="min_characters_message" translatable="true">Сообщение должно превышать 5 символов</string>
     <string name="max_characters_message" translatable="true">Сообщение должно не превышать 200 символоов</string>
-    <string name="accept" translatable="true">принять</string>
+    <string name="accept" translatable="true">Принять</string>
     <string name="wrong_message" translatable="true">Неправильное сообщение</string>
     <string name="message_log_out" translatable="true">Вы действительно хотите выйти из своей учётной записи?</string>
     <string name="yes" translatable="true">да</string>
@@ -40,8 +34,98 @@
     <string name="log_out_of_account" translatable="true">Выход из акканта</string>
     <string name="less_minute" translatable="true">меньше минуты</string>
     <string name="minutes_ago" translatable="true">минут назад</string>
+    <string name="have_pinned_message" translatable="true">Уже есть закреплённое сообщение</string>
+    <string name="to_the_menu" translatable="true">в меню</string>
+    <string name="again" translatable="true">ещё раз</string>
+    <string name="new_message_notification" translatable="true">В Ангарской деревне новое сообщение</string>
+    <string name="canceled_registartion" translatable="true">Вы отменили регистрацию. Если меню загрузки занимает слишком много времени, проверьте подключение к Интернету или попробуйте VPN.</string>
+
+    <!-- Moderation -->
+
+    <string name="insult" translatable="true">Оскорбления</string>
+    <string name="discrimination" translatable="true">Дискриминация</string>
+    <string name="slander" translatable="true">Клевета</string>
+    <string name="personal_information" translatable="true">Личная информация</string>
+    <string name="spam" translatable="true">Спам</string>
+    <string name="another" translatable="true">Другое</string>
+    <string name="report" translatable="true">Жалоба</string>
+    <string name="confirmation" translatable="true">Подтверждение</string>
+    <string name="confirmation_delete" translatable="true">Вы действительно хотите удалить это сообщение?</string>
+    <string name="cancel" translatable="true">Отмена</string>
+    <string name="delete" translatable="true">Удалить</string>
+    <string name="thanks_help" translatable="true">Спасибо за вашу помощь</string>
+    <string name="confirmation_report" translatable="true">Вы действительно хотите отправить жалобу? За ложные обвинения к вам помогут быть применены наказания.</string>
+    <string name="send" translatable="true">Отправить</string>
+    <string name="mute_alert" translatable="true">Ваша учётная запись заглушена, свяжитесь с разарботчиками</string>
+    <string name="ban_alert" translatable="true">Ваша учётная запись заблокированна, свяжитесь с разарботчиками</string>
+    <string name="punish_mod" translatable="true">Запрещенно применять наказания к модераторам, свяжитесь с разарботчиком.</string>
+
+    <!-- Moderation Activity -->
+
+    <string name="moderation" translatable="true">Модерация</string>
+    <string name="identifier" translatable="true">Идентификатор:</string>
+    <string name="name" translatable="true">Имя:</string>
+    <string name="emai" translatable="true">Почта:</string>
+    <string name="muted" translatable="true">Заглушён:</string>
+    <string name="banned" translatable="true">Забанен:</string>
+    <string name="moderator" translatable="true">Модератор:</string>
+    <string name="reputation" translatable="true">Репутация:</string>
+    <string name="reason_ban" translatable="true">Укажите причину бана на английском языке</string>
+    <string name="ban" translatable="true">Бан</string>
+    <string name="reason_mute" translatable="true">Укажите причину мута на английском языке</string>
+    <string name="mute" translatable="true">Мут</string>
+    <string name="reason_unban" translatable="true">Укажите причину забана на английском языке</string>
+    <string name="unban" translatable="true">Разбан</string>
+    <string name="reason_unmute" translatable="true">Укажите причину размута на английском языке</string>
+    <string name="unmute" translatable="true">Размут</string>
+    <string name="reason_warn" translatable="true">Укажите причину и описание предупреждения на английском языке</string>
+    <string name="apply" translatable="true">Применить</string>
+    <string name="warn" translatable="true">Пред</string>
+    <string name="rules" translatable="true">Правила</string>
+    <string name="search_hint" translatable="true">параметер : значение</string>
+    <string name="rules_description" translatable="true">
+        1) Правила допустимого использования раздела Forum\n
+        Правила призваны создать комфортные условия для всех пользователей. Соблюдайте их, когда пользуетесь форумом. Время от времени перечитывайте эти правила, поскольку они могут меняться.\n
+        2) Спам и использование в коммерческих целях\n
+        Не рассылайте спам, сообщения коммерческого характера в больших количествах или автоматические сообщения и не способствуйте их рассылке. Не используйте в таких же целях звонки. К спаму относятся, в частности, массовые рассылки рекламного или коммерческого характера без согласия получателей, а также навязывание услуг. Соблюдайте законы, которые запрещают навязывание товаров и услуг по телефону.\n
+        3) Защита своих прав и безопасность\n
+        Для того, чтобы пожаловаться на пользователя нажмите на значок с восклицательным знаком поверх опасного сообщения и отправьте жалобу. Наши модераторы примут незамедлительные меры по соблюдению правил. Также, все ваши жалобы будут отображаться на панели сверху, а также их статус. Мы будем признательны вам за бдительность.\n
+        4) Мошенничество, фишинг и другие действия обманного характера\n
+        Запрещено использовать Forum для фишинговых атак, несанкционированного сбора конфиденциальной информации (в том числе паролей, данных банковских карт и номеров социального страхования). Запрещается использовать Forum с целью обмануть, ввести в заблуждение других пользователей или завладеть их данными нечестным путем.\n
+        Запрещается выдавать себя за другое лицо и предоставлять ложные сведения о себе или пользователе, отправляющем сообщение.\n
+        5) Вредоносное ПО\n
+        Запрещается распространять вредоносные программы, вирусы, троянские программы, поврежденные файлы, опасный программный код и другие материалы, которые могут препятствовать работе сетей, серверов и других элементов инфраструктуры IgorApplications.\n
+        6) Безопасность детей\n
+        Запрещается использовать Forum каким бы то ни было способом, подвергающим угрозе детей. К этому относятся любые формы представления несовершеннолетних в сексуальном контексте и любые материалы сексуального характера с изображением детей. IgorApplications придерживается политики абсолютной нетерпимости в отношении таких материалов. В таком случае учётная запись будет заблокирована, а все материалы немедленно удалены.\n
+        7) Домогательства\n
+        Запрещается использовать Forum для домогательств, запугивания и угроз. Запрещается привлекать других пользователей для участия в подобной деятельности.\n
+        8) Личная и конфиденциальная информация\n
+        Запрещается распространять конфиденциальные данные третьих лиц, например, номера социального страхования и кредитных карт или пароли аккаунтов, без разрешения их владельцев.\n
+        9) Незаконные действия\n
+        Запрещается использовать Forum для пропаганды, организации и совершения любых противозаконных действий.\n
+        10) Обеспечение соблюдения правил\n
+        IgorApplications может блокировать аккаунты, владельцы которых нарушают правила. Если вы считаете, что ваш аккаунт заблокировали по ошибке, то свяжитесь с разработчиками по почте igorapplications@gmail.com. С уважением, IgorApplications.\n
+    </string>
+
+    <!-- Report Activity -->
+
+    <string name="reports" translatable="true">Отчёты</string>
+    <string name="sender_id" translatable="true">Ид отправителя:</string>
+    <string name="sender_name" translatable="true">Имя отправителя:</string>
+    <string name="guility_id" translatable="true">Ид виновного:</string>
+    <string name="guilty_name" translatable="true">Имя виновного:</string>
+    <string name="cause" translatable="true">Причина:</string>
+    <string name="message" translatable="true">Сообщение:</string>
+    <string name="report_status" translatable="true">Статус жалобы:</string>
+    <string name="reject" translatable="true">Отклонить</string>
+    <string name="under_consideration" translatable="true">На рассмотрении</string>
+    <string name="rejected" translatable="true">Отклонено</string>
+    <string name="received" translatable="true">Принято</string>
+    <string name="approve_report" translatable="true">Вы действительно хотите одобрить жалобу? Виновный должен быть наказан или предупреждён.</string>
+    <string name="dismiss_report" translatable="true">Вы действительно хотите отклонить жалобу? В случае злоупотребления отправитель может быть наказан.</string>
 
     <!-- strings of Attraction Activity -->
+
     <string name="description" translatable="true">Описание</string>
     <string name="listen" translatable="true">Слушать</string>
 

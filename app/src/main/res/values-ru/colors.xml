@@ -8,9 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="chocolate">#D2691E</color>
+    <color name="white_chocolate">#ce9671</color>
     <color name="navajowhite">#FFDEAD</color>
     <color name="saddlebrown">#8B4513</color>
     <color name="green">#008000</color>
     <color name="gray">#808080</color>
     <color name="dark_gray">#6B6564</color>
+    <color name="red">#8B0000</color>
 </resources>

@@ -1,12 +1,6 @@
 <resources>
     <string name="app_name" translatable="true">Angarsk village</string>
 
-    <!-- strings of Splash Screen -->
-
-    <string name="company_name" translatable="true">
-        <![CDATA[ <b><font color=#ff0000>write</b>Igor<b><font color=#0000ff>text</b>Applications]]>
-    </string>
-
     <!-- strings of Menu Activity -->
 
     <string name="description_app_name" translatable="true">architectural ethnographic museum</string>
@@ -30,9 +24,9 @@
 
     <string name="message_field_hint" translatable="true">enter text here</string>
     <string name="login_failed" translatable="true">Error when logging into your account</string>
-    <string name="min_characters_message" translatable="true">Message must exceed than 20 characters</string>
+    <string name="min_characters_message" translatable="true">Message must exceed than 5 characters</string>
     <string name="max_characters_message" translatable="true">Message must not exceed 200 characters</string>
-    <string name="accept" translatable="true">accept</string>
+    <string name="accept" translatable="true">Accept</string>
     <string name="wrong_message" translatable="true">Wrong message</string>
     <string name="message_log_out" translatable="true">Are you sure want to log out of your account?</string>
     <string name="yes" translatable="true">yes</string>
@@ -40,8 +34,98 @@
     <string name="log_out_of_account" translatable="true">Log out of account</string>
     <string name="less_minute" translatable="true">less than a minute</string>
     <string name="minutes_ago" translatable="true">minutes ago</string>
+    <string name="have_pinned_message" translatable="true">Already have a pinned message</string>
+    <string name="to_the_menu" translatable="true">to the menu</string>
+    <string name="again" translatable="true">again</string>
+    <string name="new_message_notification" translatable="true">In the Angarsk village a new message</string>
+    <string name="canceled_registartion" translatable="true">You have canceled your registration. If the boot menu takes too long, check your internet connection or try a VPN.</string>
+    
+    <!-- Moderation -->
+
+    <string name="insult" translatable="true">Insult</string>
+    <string name="discrimination" translatable="true">Discrimination</string>
+    <string name="slander" translatable="true">Slander</string>
+    <string name="personal_information" translatable="true">Personal information</string>
+    <string name="spam" translatable="true">Spam</string>
+    <string name="another" translatable="true">Another</string>
+    <string name="report" translatable="true">Report</string>
+    <string name="confirmation" translatable="true">Confirmation</string>
+    <string name="confirmation_delete" translatable="true">Are you sure you want to delete the message?</string>
+    <string name="cancel" translatable="true">Cancel</string>
+    <string name="delete" translatable="true">Delete</string>
+    <string name="thanks_help" translatable="true">Thanks for your help</string>
+    <string name="confirmation_report" translatable="true">Are you sure want to submit a complaint? You may be punished for making false accusations.</string>
+    <string name="send" translatable="true">Send</string>
+    <string name="mute_alert" translatable="true">Your account has been muted, contact the developers</string>
+    <string name="ban_alert" translatable="true">Your account has been blocked, contact the developers</string>
+    <string name="punish_mod" translatable="true">It is forbidden to apply punishments to moderators, contact to developer.</string>
+
+    <!-- Moderation Activity -->
+
+    <string name="moderation" translatable="true">Moderation</string>
+    <string name="identifier" translatable="true">Identifier:</string>
+    <string name="name" translatable="true">Name:</string>
+    <string name="emai" translatable="true">Email:</string>
+    <string name="muted" translatable="true">Muted:</string>
+    <string name="banned" translatable="true">Banned:</string>
+    <string name="moderator" translatable="true">Moderator:</string>
+    <string name="reputation" translatable="true">Reputation:</string>
+    <string name="reason_ban" translatable="true">Specify the reason for the ban in English</string>
+    <string name="ban" translatable="true">Ban</string>
+    <string name="reason_mute" translatable="true">Specify the reason for the mute in English</string>
+    <string name="mute" translatable="true">Mute</string>
+    <string name="reason_unban" translatable="true">Specify the reason for the unban in English</string>
+    <string name="unban" translatable="true">Unban</string>
+    <string name="reason_unmute" translatable="true">Specify the reason for the unmute in English</string>
+    <string name="unmute" translatable="true">Unmute</string>
+    <string name="reason_warn" translatable="true">Specify the reason and description of the warning in English</string>
+    <string name="apply" translatable="true">Apply</string>
+    <string name="warn" translatable="true">Warn</string>
+    <string name="rules" translatable="true">Rules</string>
+    <string name="search_hint" translatable="true">parameter : value</string>
+    <string name="rules_description" translatable="true">
+        1) Forum Acceptable Use Rules\n
+        The rules are designed to create comfortable conditions for all users. Observe them when using the forum. Please review these rules from time to time as they may change.\n
+        2) Spam and commercial use\n
+        Do not send spam, commercial messages in large quantities or automatic messages and do not contribute to their distribution. Do not use calls for the same purpose. Spam includes, in particular, mass mailings of an advertising or commercial nature without the consent of the recipients, as well as the imposition of services. Comply with laws that prohibit solicitation of goods and services over the phone.\n
+        3) Protection of your rights and safety\n
+        To report a user, click on the exclamation mark icon above the dangerous message and submit a complaint. Our moderators will take immediate action to enforce the rules. Also, all your complaints will be displayed on the top panel, as well as their status. We will be grateful for your vigilance.\n
+        4) Fraud, phishing and other deceptive activities\n
+        It is forbidden to use Forum for phishing attacks, unauthorized collection of confidential information (including passwords, bank card information and social security numbers). It is prohibited to use the Forum to deceive, mislead other users or take their data dishonestly.\n
+        You must not impersonate another person or provide false information about yourself or the person sending the message.\n
+        5) Malware\n
+        It is prohibited to distribute malware, viruses, Trojans, corrupted files, dangerous program code and other materials that may interfere with the operation of networks, servers and other infrastructure elements of IgorApplications.\n
+        6) Child safety\n
+        You may not use the Forum in any way that endangers children. This includes any form of representation of minors in a sexual context and any material of a sexual nature that depicts children. IgorApplications has a zero tolerance policy for such content. In this case, the account will be blocked, and all materials will be immediately deleted.\n
+        7) Harassment\n
+        You may not use the Forum for harassment, intimidation or threats. It is forbidden to invite other users to participate in such activities.\n
+        8) Personal and confidential information\n
+        Do not distribute confidential data of third parties, such as social security and credit card numbers or account passwords, without the permission of their owners.\n
+        9) Illegal activities\n
+        It is forbidden to use the Forum for propaganda, organizing and committing any illegal actions.\n
+        10) Enforcement\n
+        IgorApplications can block accounts whose owners violate the rules. If you think that your account was blocked by mistake, please contact the developers at igorapplications@gmail.com. Sincerely, IgorApplications.\n
+    </string>
+
+    <!-- Report Activity -->
+
+    <string name="reports" translatable="true">Reports</string>
+    <string name="sender_id" translatable="true">Sender Id:</string>
+    <string name="sender_name" translatable="true">Sender name:</string>
+    <string name="guility_id" translatable="true">Guilty Id:</string>
+    <string name="guilty_name" translatable="true">Guilty name:</string>
+    <string name="cause" translatable="true">Cause:</string>
+    <string name="message" translatable="true">Message:</string>
+    <string name="report_status" translatable="true">Report status:</string>
+    <string name="reject" translatable="true">Reject</string>
+    <string name="under_consideration" translatable="true">Under consideration</string>
+    <string name="rejected" translatable="true">Rejected</string>
+    <string name="received" translatable="true">Received</string>
+    <string name="approve_report" translatable="true">Are you sure you want to approve the report? The perpetrator must be punished or warned.</string>
+    <string name="dismiss_report" translatable="true">Are you sure you want to dismiss the report? In case of abuse, the sender can be punished.</string>
 
     <!-- strings of Attraction Activity -->
+
     <string name="description" translatable="true">Description</string>
     <string name="listen" translatable="true">Listen</string>
 

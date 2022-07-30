@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "608926083488",
+    "project_id": "igorapplications-angara",
+    "storage_bucket": "igorapplications-angara.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608926083488:android:332c5b483e7c636d829cc5",
+        "android_client_info": {
+          "package_name": "com.iapp.angara"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608926083488-kmr6chqgdsukedj2sicerg0acri8sku3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iapp.angara",
+            "certificate_hash": "df07c99f45be60c2169cd6354a8bada8dcffcf96"
+          }
+        },
+        {
+          "client_id": "608926083488-m4dmqk13b8a9ks1353bo9qjeisdcorf3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3CYKGm_YcvYsjBn_XOfVev5TxBcZJJdo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608926083488-m4dmqk13b8a9ks1353bo9qjeisdcorf3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
