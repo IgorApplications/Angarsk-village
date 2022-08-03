@@ -13,10 +13,13 @@
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_chat.xml" value="0.264" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_log.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_map.xml" value="0.19791666666666666" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_menu.xml" value="0.264" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_moderation.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_reports.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_reports_actvity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/blackout.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/empty.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/first_background.xml" value="0.25416666666666665" />
@@ -26,10 +29,11 @@
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/list_item_moderation.xml" value="0.253125" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/list_item_reports.xml" value="0.253125" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/pin.xml" value="0.253125" />
+        <entry key="..\:/Projects/presenters/Angara/app/src/main/res/layout/second_background.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

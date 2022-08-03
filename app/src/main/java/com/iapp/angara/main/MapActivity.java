@@ -63,7 +63,7 @@ public class MapActivity extends AppCompatActivity {
                 new Animation(Animation.Type.SMOOTH, 0),
                 null);
 
-        initGUI();
+        initGraphic();
     }
 
     @Override
@@ -80,11 +80,9 @@ public class MapActivity extends AppCompatActivity {
         MapKitFactory.getInstance().onStart();
     }
 
-    private void initGUI() {
+    private void initGraphic() {
         PlaceMark angarskVillage = new PlaceMark(this, ANGARSK_VILLAGE, getString(R.string.app_name));
-        angarskVillage.addOnClickListener(() -> {
-            Settings.soundPlayer.getClick().play();
-        });
+        angarskVillage.addOnClickListener(() -> Settings.soundPlayer.getClick().play());
         angarskVillage.add(mapView);
 
         PlaceMark fourthManor = new PlaceMark(this, FOURTH_MANOR, getString(R.string.fourth_manor));

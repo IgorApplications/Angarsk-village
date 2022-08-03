@@ -10,6 +10,7 @@ import com.iapp.angara.database.Report;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// TODO
 public class SearchUtil {
 
     private static final String REGEX_SEPARATOR = "\\s*:\\s*";

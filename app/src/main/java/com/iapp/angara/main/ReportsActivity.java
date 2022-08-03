@@ -28,7 +28,6 @@ import com.iapp.angara.util.Settings;
 
 import java.util.List;
 
-
 public class ReportsActivity extends AppCompatActivity {
 
     private RelativeLayout reportsLayout;
@@ -42,7 +41,6 @@ public class ReportsActivity extends AppCompatActivity {
 
     private String request;
     private boolean headerRemoved;
-    private boolean showedPin;
     private int index, top;
     private View view;
 

@@ -1,15 +1,9 @@
 package com.iapp.angara.main;
 
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
-import android.app.job.JobWorkItem;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.transition.Scene;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
@@ -26,8 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -47,16 +39,12 @@ import com.iapp.angara.database.Report;
 import com.iapp.angara.ui.DatabaseLoading;
 import com.iapp.angara.ui.ElementAdapter;
 import com.iapp.angara.ui.NavigateImageView;
-import com.iapp.angara.ui.NotificationService;
 import com.iapp.angara.ui.OnChangeElement;
 import com.iapp.angara.util.Settings;
 import com.iapp.angara.util.TimeUtil;
 
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -270,7 +258,7 @@ public class ChatActivity extends AppCompatActivity {
             userMessageText = v.findViewById(R.id.user_message_text);
 
             messageUser.setText(model.getUserName());
-            messageTime.setText(defineTimeView(model.getTime()));
+            messageTime.setText(TimeUtil.defineTimeView(this, model.getTime()));
 
             if (Settings.firebaseController.findAccount(model.getUserId()).isModerator()) {
                 messageUser.setTextColor(Color.RED);
@@ -501,29 +489,5 @@ public class ChatActivity extends AppCompatActivity {
 
         Transition fadeTransit = TransitionInflater.from(this).inflateTransition(R.transition.fade_transition);
         TransitionManager.go(another, fadeTransit);
-    }
-
-    private String defineTimeView(long time) {
-        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
-        calendar.setTime(new Date(time));
-        calendar.setTimeZone(TimeZone.getDefault());
-
-        long passed = new Date().getTime() - calendar.getTime().getTime();
-
-        String res;
-        if (TimeUtil.getSeconds(passed) < 60) {
-            res = getString(R.string.less_minute);
-        } else if (TimeUtil.getMinutes(passed) < 60) {
-            res = DateFormat.format("mm ", new Date(passed)) + getString(R.string.minutes_ago);
-        } else if (TimeUtil.getHours(passed) < 24){
-            res = String.valueOf(DateFormat.format("HH:mm", new Date(time)));
-        } else if (TimeUtil.getDays(passed) < 365) {
-            res = String.valueOf(DateFormat.format("dd MMMM", new Date(time)));
-        } else {
-            res = String.valueOf(DateFormat.format("dd MMMM yyyy", new Date(time)));
-        }
-        res = res.replaceAll("^0", "");
-
-        return res;
     }
 }

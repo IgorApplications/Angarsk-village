@@ -1,12 +1,6 @@
 package com.iapp.angara.database;
 
-import android.app.Service;
-import android.content.Context;
-import android.content.Intent;
-import android.os.IBinder;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.auth.FirebaseUser;
@@ -27,12 +21,10 @@ public class FirebaseController {
     public static final String CHILD_ACCOUNTS = "accounts";
     public static final String CHILD_REPORTS = "reports";
     public static final String CHILD_MESSAGES = "general_chat";
-    private static final String CHANNEL_ID = "FORUM";
 
-    private volatile Account user;
-    private final FirebaseUser firebaseUser;
-    private final DatabaseReference databaseReference;
-    private NotificationManagerCompat notificationManager;
+    private Account user;
+    private FirebaseUser firebaseUser;
+    private DatabaseReference databaseReference;
 
     private final List<Account> accounts = new ArrayList<>();
     private final List<Report> reports = new ArrayList<>();
@@ -45,6 +37,8 @@ public class FirebaseController {
     private boolean readyAccounts;
     private boolean readyReports;
     private boolean readyMessages;
+
+    private FirebaseController() {}
 
     public FirebaseController(FirebaseUser firebaseUser) {
         this.firebaseUser = firebaseUser;
