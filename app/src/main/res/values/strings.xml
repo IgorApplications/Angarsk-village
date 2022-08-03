@@ -65,7 +65,7 @@
     <string name="moderation" translatable="true">Moderation</string>
     <string name="identifier" translatable="true">Identifier:</string>
     <string name="name" translatable="true">Name:</string>
-    <string name="emai" translatable="true">Email:</string>
+    <string name="email" translatable="true">Email:</string>
     <string name="muted" translatable="true">Muted:</string>
     <string name="banned" translatable="true">Banned:</string>
     <string name="moderator" translatable="true">Moderator:</string>
@@ -112,7 +112,7 @@
     <string name="reports" translatable="true">Reports</string>
     <string name="sender_id" translatable="true">Sender Id:</string>
     <string name="sender_name" translatable="true">Sender name:</string>
-    <string name="guility_id" translatable="true">Guilty Id:</string>
+    <string name="guilty_id" translatable="true">Guilty Id:</string>
     <string name="guilty_name" translatable="true">Guilty name:</string>
     <string name="cause" translatable="true">Cause:</string>
     <string name="message" translatable="true">Message:</string>

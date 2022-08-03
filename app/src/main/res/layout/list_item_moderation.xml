@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:text="@string/emai"/>
+                android:text="@string/email"/>
 
             <TextView
                 android:id="@+id/content_email"

@@ -65,7 +65,7 @@
     <string name="moderation" translatable="true">Модерация</string>
     <string name="identifier" translatable="true">Идентификатор:</string>
     <string name="name" translatable="true">Имя:</string>
-    <string name="emai" translatable="true">Почта:</string>
+    <string name="email" translatable="true">Почта:</string>
     <string name="muted" translatable="true">Заглушён:</string>
     <string name="banned" translatable="true">Забанен:</string>
     <string name="moderator" translatable="true">Модератор:</string>
@@ -112,7 +112,7 @@
     <string name="reports" translatable="true">Отчёты</string>
     <string name="sender_id" translatable="true">Ид отправителя:</string>
     <string name="sender_name" translatable="true">Имя отправителя:</string>
-    <string name="guility_id" translatable="true">Ид виновного:</string>
+    <string name="guilty_id" translatable="true">Ид виновного:</string>
     <string name="guilty_name" translatable="true">Имя виновного:</string>
     <string name="cause" translatable="true">Причина:</string>
     <string name="message" translatable="true">Сообщение:</string>

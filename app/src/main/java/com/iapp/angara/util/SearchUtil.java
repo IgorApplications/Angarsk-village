@@ -2,7 +2,6 @@ package com.iapp.angara.util;
 
 import android.content.Context;
 
-import com.google.firebase.database.Query;
 import com.iapp.angara.R;
 import com.iapp.angara.database.Account;
 import com.iapp.angara.database.Report;
@@ -10,11 +9,37 @@ import com.iapp.angara.database.Report;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// TODO
-public class SearchUtil {
+/**
+ * @author Igor Ivanov
+ * @version 1.0
+ * Utility class for querying and searching
+ * reports and accounts
+ * */
+public final class SearchUtil {
 
+    /**
+     * RegEx delimiter "parameter : value"
+     * Does not depend on spaces
+     * */
     private static final String REGEX_SEPARATOR = "\\s*:\\s*";
 
+    /**
+     * Methods for executing search
+     * @param context from which the method is invoked
+     * @param request in format "parameter : value"
+     * parameter: R.string.identifier,
+     *            R.string.name,
+     *            R.string.email,
+     *            R.string.muted,
+     *            R.string.banned,
+     *            R.string.moderator,
+     *            R.string.reputation
+     * value    : any
+     * @param accounts is search data storage
+     * @return results matching query
+     * If request is not valid, then the
+     * link to the data storage
+     * */
     public static List<Account> parseAccountSearchParam(Context context, String request, List<Account> accounts) {
         if (request == null) return accounts;
         String[] searchParameters = request.split(REGEX_SEPARATOR);
@@ -37,7 +62,7 @@ public class SearchUtil {
                     .collect(Collectors.toList());
         }
 
-        if (searchParameters[0].equals(context.getString(R.string.emai))) {
+        if (searchParameters[0].equals(context.getString(R.string.email))) {
             searchParameters[0] = Account.EMAIL;
             return accounts.stream()
                     .filter(account ->
@@ -80,6 +105,29 @@ public class SearchUtil {
         return accounts;
     }
 
+    /**
+     * Methods for executing search
+     * @param context from which the method is invoked
+     * @param request in format "parameter : value"
+     * parameter: R.string.identifier,
+     *            R.string.sender_id,
+     *            R.string.sender_name,
+     *            R.string.guilty_id,
+     *            R.string.guilty_name,
+     *            R.string.cause,
+     *            R.string.message,
+     *            R.string.report_status,
+     *            R.string.report_status
+     *
+     * R.string.report_status : R.string.under_consideration,
+     *                          R.string.received,
+     *                          R.string.rejected
+     * value                   : any
+     * @param reports is search data storage
+     * @return results matching query
+     * If request is not valid, then the
+     * link to the data storage
+     * */
     public static List<Report> parseReportSearchParam(Context context, String request, List<Report> reports) {
         if (request == null) return reports;
         String[] searchParameters = request.split(REGEX_SEPARATOR);
@@ -107,7 +155,7 @@ public class SearchUtil {
                     .collect(Collectors.toList());
         }
 
-        if (searchParameters[0].equals(context.getString(R.string.guility_id))) {
+        if (searchParameters[0].equals(context.getString(R.string.guilty_id))) {
             searchParameters[0] = Report.GUILTY_ID;
             return reports.stream()
                     .filter(report -> report.getGuiltyId() == Long.parseLong(searchParameters[1]))

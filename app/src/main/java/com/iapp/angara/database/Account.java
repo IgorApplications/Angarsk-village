@@ -83,7 +83,7 @@ public class Account implements Element {
         return moderator;
     }
 
-    public void setModerator() {
+    public void makeModerator() {
         moderator = true;
     }
 

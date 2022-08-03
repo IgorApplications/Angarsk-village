@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:text="@string/guility_id"/>
+                android:text="@string/guilty_id"/>
 
             <TextView
                 android:id="@+id/content_guilty_id"

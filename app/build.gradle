@@ -12,8 +12,8 @@ android {
         applicationId "com.iapp.angara"
         minSdk 24
         targetSdk 32
-        versionCode 20
-        versionName "1.0.93"
+        versionCode 21
+        versionName "1.0.94"
     }
 
     buildTypes {
@@ -55,5 +55,6 @@ dependencies {
 
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
     testImplementation 'org.junit.vintage:junit-vintage-engine'
+    testImplementation 'org.mockito:mockito-core:4.0.0'
 }
 
