@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.OperationCanceledException;
 import android.transition.Scene;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
@@ -186,7 +187,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
-        if (result.getResultCode() == RESULT_OK) {
+        if (result.getResultCode() == RESULT_OK && FirebaseAuth.getInstance().getCurrentUser() != null) {
             if (Settings.firebaseController == null) {
                 Settings.firebaseController = new FirebaseController(FirebaseAuth.getInstance().getCurrentUser());
             }
@@ -224,18 +225,18 @@ public class ChatActivity extends AppCompatActivity {
 
     private void logUser() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
+        if (user != null) {
+            if (Settings.firebaseController == null) {
+                Settings.firebaseController = new FirebaseController(user);
+            }
+            displayAllData();
+        } else {
             Intent signInIntent = AuthUI.getInstance()
                     .createSignInIntentBuilder()
                     .setAvailableProviders(providers)
                     .setTheme(R.style.Theme_Angara)
                     .build();
             signInLauncher.launch(signInIntent);
-        } else {
-            if (Settings.firebaseController == null) {
-                Settings.firebaseController = new FirebaseController(FirebaseAuth.getInstance().getCurrentUser());
-            }
-            displayAllData();
         }
     }
 
@@ -298,22 +299,6 @@ public class ChatActivity extends AppCompatActivity {
                 R.layout.list_item_chat, onChange);
         listOfMessages.setAdapter(adapter);
 
-        Settings.firebaseController.setOnUpdateMessages(elements -> {
-            adapter.clear();
-            updateMessages(adapter, elements);
-            updatePin(elements);
-
-            if (sentMessage) {
-                sentMessage = false;
-                return;
-            }
-
-            Runnable task = () -> runOnUiThread(() -> {
-                listOfMessages.setSelectionFromTop(++index, top);
-            });
-            Settings.threadPool.execute(task);
-        });
-
         sendButton.setClickable(false);
         Settings.loading.showWaiting(this, loadingLayout, () -> {
             adapter.clear();
@@ -321,6 +306,20 @@ public class ChatActivity extends AppCompatActivity {
             updateMessages(adapter, Settings.firebaseController.getMessages());
             updatePin(Settings.firebaseController.getMessages());
             sendButton.setClickable(true);
+
+            Settings.firebaseController.setOnUpdateMessages(elements -> {
+                adapter.clear();
+                updateMessages(adapter, elements);
+                updatePin(elements);
+
+                if (sentMessage) {
+                    sentMessage = false;
+                    return;
+                }
+
+                Runnable task = () -> runOnUiThread(() -> listOfMessages.setSelectionFromTop(++index, top));
+                Settings.threadPool.execute(task);
+            });
         }, false);
     }
 
