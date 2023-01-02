@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Development/JVM/Android Views/Angara/app/src/main/res/layout/activity_attraction.xml" value="0.22826086956521738" />
+        <entry key="..\:/Development/JVM/Android Views/Angara/app/src/main/res/layout/activity_chat.xml" value="0.22826086956521738" />
+        <entry key="..\:/Development/JVM/Android Views/Angara/app/src/main/res/layout/activity_list.xml" value="0.22826086956521738" />
+        <entry key="..\:/Development/JVM/Android Views/Angara/app/src/main/res/layout/activity_map.xml" value="0.22826086956521738" />
+        <entry key="..\:/Development/JVM/Android Views/Angara/app/src/main/res/layout/activity_menu.xml" value="0.22826086956521738" />
+        <entry key="..\:/Development/JVM/Android Views/Angara/app/src/main/res/layout/activity_moderation.xml" value="0.22826086956521738" />
+        <entry key="..\:/Development/JVM/Android Views/Angara/app/src/main/res/layout/activity_reports.xml" value="0.22826086956521738" />
+        <entry key="..\:/Development/JVM/Android Views/Angara/app/src/main/res/layout/activity_splash_screen.xml" value="0.17708333333333334" />
+        <entry key="..\:/Development/JVM/Android Views/Angara/app/src/main/res/layout/empty.xml" value="0.17708333333333334" />
+        <entry key="..\:/Development/JVM/Android Views/Angara/app/src/main/res/layout/second_background.xml" value="0.22826086956521738" />
         <entry key="..\:/Projects/Angara/app/src/main/res/layout/activity_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Projects/Angara/app/src/main/res/layout/list_item.xml" value="0.22826086956521738" />
         <entry key="..\:/Projects/presenters/Angara/app/src/main/res/drawable-anydpi/ic_back_button.xml" value="0.1775" />

@@ -7,6 +7,12 @@
     android:background="@drawable/background_v"
     tools:context=".main.MenuActivity">
 
+    <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/snow"
+            android:scaleType="centerCrop"/>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="150dp"
@@ -47,6 +53,14 @@
         android:layout_centerInParent="true"
         android:layout_weight="6"
         android:orientation="vertical">
+
+        <pl.droidsonroids.gif.GifImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/santa_claus"
+                android:scaleType="centerCrop"/>
 
         <Button
             android:id="@+id/map_mode_btn"
