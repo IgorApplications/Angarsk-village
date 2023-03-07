@@ -8,12 +8,6 @@
     android:background="@drawable/forum_background_v"
     tools:context=".main.ReportsActivity">
 
-    <pl.droidsonroids.gif.GifImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/snow"
-            android:scaleType="centerCrop"/>
-
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="wrap_content"

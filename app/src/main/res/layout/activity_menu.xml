@@ -4,13 +4,17 @@
     android:id="@+id/menu_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_v"
     tools:context=".main.MenuActivity">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background"
+            android:scaleType="centerCrop"/>
 
     <pl.droidsonroids.gif.GifImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/snow"
             android:scaleType="centerCrop"/>
 
     <ImageView
@@ -52,15 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_weight="6"
-        android:orientation="vertical">
-
-        <pl.droidsonroids.gif.GifImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/santa_claus"
-                android:scaleType="centerCrop"/>
+        android:orientation="vertical"
+        android:paddingBottom="40dp">
 
         <Button
             android:id="@+id/map_mode_btn"

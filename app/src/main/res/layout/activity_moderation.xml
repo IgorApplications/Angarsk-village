@@ -8,12 +8,6 @@
     android:background="@drawable/forum_background_v"
     tools:context=".main.ModerationActivity">
 
-    <pl.droidsonroids.gif.GifImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/snow"
-            android:scaleType="centerCrop"/>
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/action_bar"
         android:layout_width="match_parent"

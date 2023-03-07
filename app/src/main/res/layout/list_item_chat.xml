@@ -93,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/message_user"
+        android:autoLink="all"
         android:textSize="18sp"
         android:padding="10dp"
         android:layout_marginStart="10dp"

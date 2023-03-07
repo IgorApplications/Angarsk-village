@@ -2,11 +2,8 @@ package com.iapp.angara.main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
@@ -27,22 +24,18 @@ public class MenuActivity extends AppCompatActivity {
 
     private static boolean applicationInit;
 
-    private RelativeLayout menu;
     private ImageButton mainSound;
 
     private SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         SplashScreen.installSplashScreen(this);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
         initApp();
         initGraphics();
-        updateBackgroundOrientation();
         updateMusicButton();
     }
 
@@ -95,7 +88,8 @@ public class MenuActivity extends AppCompatActivity {
         if (!applicationInit) {
             Settings.mainMusicOn = getSetting(SETTING_MAIN_MUSIC_ON);
             Settings.soundPlayer = new SoundPlayer(this);
-            Settings.threadPool = Executors.newFixedThreadPool(3);
+            // init
+            Settings.getThreadPool();
             if (Settings.mainMusicOn) {
                 Settings.soundPlayer.getMain().playConst();
             }
@@ -104,16 +98,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void initGraphics() {
-        menu = findViewById(R.id.menu_layout);
+        RelativeLayout menu = findViewById(R.id.menu_layout);
         mainSound = findViewById(R.id.main_sound);
-    }
-
-    private void updateBackgroundOrientation() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            menu.setBackgroundResource(R.drawable.background_v);
-        } else {
-            menu.setBackgroundResource(R.drawable.background_h);
-        }
     }
 
     private void updateMusicButton() {

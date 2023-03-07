@@ -27,7 +27,7 @@ public class DatabaseLoading {
                 if (!endVisible) loading.setVisibility(View.INVISIBLE);
             });
         };
-        Settings.threadPool.execute(task);
+        Settings.getThreadPool().execute(task);
     }
 
     public void showWaitingAccounts(Activity activity, View loading,
@@ -49,7 +49,7 @@ public class DatabaseLoading {
                 if (!endVisible) loading.setVisibility(View.INVISIBLE);
             });
         };
-        Settings.threadPool.execute(task);
+        Settings.getThreadPool().execute(task);
     }
 
     public void showWaitingMessages(Activity activity, View loading,
@@ -71,7 +71,7 @@ public class DatabaseLoading {
                 if (!endVisible) loading.setVisibility(View.INVISIBLE);
             });
         };
-        Settings.threadPool.execute(task);
+        Settings.getThreadPool().execute(task);
     }
 
     public void showWaitingReports(Activity activity, View loading,
@@ -93,6 +93,6 @@ public class DatabaseLoading {
                 if (!endVisible) loading.setVisibility(View.INVISIBLE);
             });
         };
-        Settings.threadPool.execute(task);
+        Settings.getThreadPool().execute(task);
     }
 }

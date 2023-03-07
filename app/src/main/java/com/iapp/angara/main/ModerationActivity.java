@@ -125,7 +125,7 @@ public class ModerationActivity extends AppCompatActivity {
             updateAccounts(adapter, accounts);
 
             Runnable task = () -> runOnUiThread(() -> accountsView.setSelectionFromTop(index, top));
-            Settings.threadPool.execute(task);
+            Settings.getThreadPool().execute(task);
         });
         Settings.loading.showWaiting(this, loadingLayout,
                 () -> updateAccounts(adapter, Settings.firebaseController.getAccounts()), false);

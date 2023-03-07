@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.OperationCanceledException;
 import android.transition.Scene;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
@@ -317,8 +316,9 @@ public class ChatActivity extends AppCompatActivity {
                     return;
                 }
 
+
                 Runnable task = () -> runOnUiThread(() -> listOfMessages.setSelectionFromTop(++index, top));
-                Settings.threadPool.execute(task);
+                Settings.getThreadPool().execute(task);
             });
         }, false);
     }

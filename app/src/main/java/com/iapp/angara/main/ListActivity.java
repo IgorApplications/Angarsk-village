@@ -1,7 +1,6 @@
 package com.iapp.angara.main;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -19,8 +18,6 @@ import com.iapp.angara.util.Settings;
 public class ListActivity extends AppCompatActivity {
 
     private static int scrollY;
-
-    private RelativeLayout listLayout;
     private ScrollView listScroll;
 
     @Override
@@ -30,9 +27,8 @@ public class ListActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_list);
 
-        listLayout = findViewById(R.id.list_of_accounts);
+        RelativeLayout listLayout = findViewById(R.id.list_of_accounts);
         listScroll = findViewById(R.id.list_scroll);
-        updateBackgroundOrientation();
 
         listScroll.post(() -> listScroll.scrollTo(0, scrollY));
     }
@@ -71,13 +67,5 @@ public class ListActivity extends AppCompatActivity {
         scrollY = listScroll.getScrollY();
         Intent intent = new Intent(this, AttractionActivity.class);
         startActivity(intent);
-    }
-
-    private void updateBackgroundOrientation() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            listLayout.setBackgroundResource(R.drawable.background_v);
-        } else {
-            listLayout.setBackgroundResource(R.drawable.background_h);
-        }
     }
 }

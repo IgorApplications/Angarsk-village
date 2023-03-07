@@ -155,7 +155,7 @@ public class ReportsActivity extends AppCompatActivity {
                 updateReports(adapter, reports);
 
                 Runnable task = () -> runOnUiThread(() -> reportsView.setSelectionFromTop(index, top));
-                Settings.threadPool.execute(task);
+                Settings.getThreadPool().execute(task);
             });
             Settings.loading.showWaiting(this,
                     loadingLayout, () -> updateReports(adapter, Settings.firebaseController.getReports()), false);

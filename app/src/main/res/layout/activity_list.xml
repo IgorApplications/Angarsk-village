@@ -4,13 +4,12 @@
     android:id="@+id/list_of_accounts"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.ListActivity"
-    android:background="@drawable/background_v">
+    tools:context=".main.ListActivity">
 
-    <pl.droidsonroids.gif.GifImageView
+    <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/snow"
+            android:src="@drawable/background"
             android:scaleType="centerCrop"/>
 
     <ScrollView

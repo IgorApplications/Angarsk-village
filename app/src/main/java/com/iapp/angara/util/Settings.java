@@ -15,8 +15,12 @@ public class Settings {
     public static SoundPlayer soundPlayer;
     public static FirebaseController firebaseController;
     public static DatabaseLoading loading;
-    public static ExecutorService threadPool;
+    private static ExecutorService threadPool;
+
+    public static ExecutorService getThreadPool() {
+        if (threadPool == null) threadPool = Executors.newFixedThreadPool(3);
+        return threadPool;
+    }
 
     public static boolean mainMusicOn;
-    public static String textLog = "";
 }
