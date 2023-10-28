@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/gray">
+        android:theme="@style/MessengerElBg">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,18 +20,18 @@
 
             <TextView
                 android:id="@+id/report_id"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:text="@string/identifier"/>
 
             <TextView
                 android:id="@+id/content_report_id"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/black"
                 android:textSize="18sp"/>
 
         </LinearLayout>
@@ -45,18 +45,18 @@
 
             <TextView
                 android:id="@+id/sender_id"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:text="@string/sender_id"/>
 
             <TextView
                 android:id="@+id/content_sender_id"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -69,18 +69,18 @@
 
             <TextView
                 android:id="@+id/sender_name"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:text="@string/sender_name"/>
 
             <TextView
                 android:id="@+id/content_sender_name"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -94,18 +94,18 @@
 
             <TextView
                 android:id="@+id/guilty_id"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:text="@string/guilty_id"/>
 
             <TextView
                 android:id="@+id/content_guilty_id"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -119,18 +119,18 @@
 
             <TextView
                 android:id="@+id/guilty_name"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:text="@string/guilty_name"/>
 
             <TextView
                 android:id="@+id/content_guilty_name"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -144,18 +144,18 @@
 
             <TextView
                 android:id="@+id/cause"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:text="@string/cause"/>
 
             <TextView
                 android:id="@+id/content_cause"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/black"
                 android:textSize="18sp"/>
         </LinearLayout>
 
@@ -169,18 +169,18 @@
 
             <TextView
                 android:id="@+id/message"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:text="@string/message"/>
 
             <TextView
                 android:id="@+id/content_message"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/black"
                 android:textSize="18sp"/>
         </LinearLayout>
 
@@ -195,18 +195,18 @@
 
             <TextView
                 android:id="@+id/status"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:text="@string/report_status"/>
 
             <TextView
                 android:id="@+id/content_status"
+                android:theme="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/black"
                 android:textSize="18sp"/>
         </LinearLayout>
 
@@ -219,14 +219,18 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/accept"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/chocolate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/accept" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/reject"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/chocolate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"

@@ -12,10 +12,8 @@ import androidx.core.splashscreen.SplashScreen;
 
 import com.iapp.angara.R;
 import com.iapp.angara.util.Mode;
-import com.iapp.angara.util.Settings;
+import com.iapp.angara.util.Constants;
 import com.iapp.angara.util.SoundPlayer;
-
-import java.util.concurrent.Executors;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -30,9 +28,10 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
+        SplashScreen.installSplashScreen(this);
         setContentView(R.layout.activity_menu);
+        System.out.println(getTheme().toString());;
 
         initApp();
         initGraphics();
@@ -40,36 +39,36 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void goToMap(View view) {
-        Settings.soundPlayer.getClick().play();
-        Settings.modeActivity = Mode.MAP;
+        Constants.soundPlayer.getClick().play();
+        Constants.modeActivity = Mode.MAP;
         Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 
     public void goToList(View view) {
-        Settings.soundPlayer.getClick().play();
-        Settings.modeActivity = Mode.LIST;
+        Constants.soundPlayer.getClick().play();
+        Constants.modeActivity = Mode.LIST;
         Intent intent = new Intent(this, ListActivity.class);
         startActivity(intent);
     }
 
     public void goToChat(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         Intent intent = new Intent(this, ChatActivity.class);
         startActivity(intent);
     }
 
     public void turnSound(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
 
-        if (Settings.mainMusicOn) {
-            Settings.soundPlayer.getMain().pause();
+        if (Constants.mainMusicOn) {
+            Constants.soundPlayer.getMain().pause();
             mainSound.setImageResource(R.drawable.ic_music_off);
-            Settings.mainMusicOn = false;
+            Constants.mainMusicOn = false;
         } else {
-            Settings.soundPlayer.getMain().resume();
+            Constants.soundPlayer.getMain().resume();
             mainSound.setImageResource(R.drawable.ic_music_on);
-            Settings.mainMusicOn = true;
+            Constants.mainMusicOn = true;
         }
     }
 
@@ -79,19 +78,19 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        saveSetting(SETTING_MAIN_MUSIC_ON, Settings.mainMusicOn);
+        saveSetting(SETTING_MAIN_MUSIC_ON, Constants.mainMusicOn);
     }
 
     private void initApp() {
         sharedPreferences = getSharedPreferences(FILE_NAME, MODE_PRIVATE);
 
         if (!applicationInit) {
-            Settings.mainMusicOn = getSetting(SETTING_MAIN_MUSIC_ON);
-            Settings.soundPlayer = new SoundPlayer(this);
+            Constants.mainMusicOn = getSetting(SETTING_MAIN_MUSIC_ON);
+            Constants.soundPlayer = new SoundPlayer(this);
             // init
-            Settings.getThreadPool();
-            if (Settings.mainMusicOn) {
-                Settings.soundPlayer.getMain().playConst();
+            Constants.getThreadPool();
+            if (Constants.mainMusicOn) {
+                Constants.soundPlayer.getMain().playConst();
             }
             applicationInit = true;
         }
@@ -103,7 +102,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void updateMusicButton() {
-        if (Settings.mainMusicOn) {
+        if (Constants.mainMusicOn) {
             mainSound.setImageResource(R.drawable.ic_music_on);
         } else {
             mainSound.setImageResource(R.drawable.ic_music_off);

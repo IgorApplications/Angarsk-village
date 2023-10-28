@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.iapp.angara.R;
 import com.iapp.angara.attractions.AttractionActivity;
 import com.iapp.angara.attractions.AttractionType;
-import com.iapp.angara.util.Settings;
+import com.iapp.angara.util.Constants;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -34,32 +34,32 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void goToMenu(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }
 
     public void goToPrison(View view) {
-        Settings.soundPlayer.getClick().play();
-        Settings.attractionType = AttractionType.PRISON;
+        Constants.soundPlayer.getClick().play();
+        Constants.attractionType = AttractionType.PRISON;
         goToAttraction();
     }
 
     public void goToFourthManor(View view) {
-        Settings.soundPlayer.getClick().play();
-        Settings.attractionType = AttractionType.FOURTH_MANOR;
+        Constants.soundPlayer.getClick().play();
+        Constants.attractionType = AttractionType.FOURTH_MANOR;
         goToAttraction();
     }
 
     public void goToChurchArchangel(View view) {
-        Settings.soundPlayer.getClick().play();
-        Settings.attractionType = AttractionType.CHURCH_ARCHANGEL;
+        Constants.soundPlayer.getClick().play();
+        Constants.attractionType = AttractionType.CHURCH_ARCHANGEL;
         goToAttraction();
     }
 
     public void goToBlacksmith(View view) {
-        Settings.soundPlayer.getClick().play();
-        Settings.attractionType = AttractionType.BLACKSMITH;
+        Constants.soundPlayer.getClick().play();
+        Constants.attractionType = AttractionType.BLACKSMITH;
         goToAttraction();
     }
 

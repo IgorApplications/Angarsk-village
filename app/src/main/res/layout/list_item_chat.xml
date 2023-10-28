@@ -7,13 +7,12 @@
 
     <TextView
         android:id="@+id/message_user"
+        android:theme="@style/MessageItems"
         android:visibility="invisible"
-        android:text="IgorApplications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="4dp"
-        android:textColor="@color/black"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:textStyle="normal|bold"/>
@@ -27,7 +26,7 @@
         android:layout_marginTop="4dp"
         android:scaleX="0.7"
         android:scaleY="0.7"
-        android:src="@drawable/ic_report_black"
+        android:theme="@style/ReportIconStyle"
         android:background="?android:attr/selectableItemBackground" />
 
     <ImageButton
@@ -39,7 +38,7 @@
         android:layout_marginTop="4dp"
         android:scaleX="0.7"
         android:scaleY="0.7"
-        android:src="@drawable/ic_delete"
+        android:theme="@style/DelIconStyle"
         android:background="?android:attr/selectableItemBackground" />
 
     <ImageButton
@@ -51,21 +50,22 @@
         android:layout_marginTop="4dp"
         android:scaleX="0.7"
         android:scaleY="0.7"
-        android:src="@drawable/ic_pin"
+        android:theme="@style/PinIconStyle"
         android:background="?android:attr/selectableItemBackground" />
 
     <TextView
         android:id="@+id/message_time"
+        android:theme="@style/MessageItems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:textColor="@color/black"
         android:layout_alignParentEnd="true"/>
 
     <com.github.library.bubbleview.BubbleTextView
         android:id="@+id/person_message_text"
+        android:theme="@style/SelfMessage"
         android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,18 +76,16 @@
         android:layout_marginEnd="10dp"
         android:autoLink="all"
         android:padding="10dp"
-        android:textColor="@color/black"
         android:textSize="18sp"
         app:angle="8dp"
         app:arrowHeight="10dp"
         app:arrowLocation="left"
         app:arrowPosition="10dp"
-        app:arrowWidth="8dp"
-        app:bubbleColor="@color/green"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        app:arrowWidth="8dp"/>
 
     <com.github.library.bubbleview.BubbleTextView
         android:id="@+id/user_message_text"
+        android:theme="@style/Message"
         android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,9 +101,6 @@
         app:arrowWidth="8dp"
         app:arrowHeight="10dp"
         app:arrowPosition="10dp"
-        app:arrowLocation="right"
-        app:bubbleColor="@color/gray"
-        android:textColor="@color/black"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        app:arrowLocation="right"/>
 
 </RelativeLayout>

@@ -12,8 +12,8 @@
         android:theme="@style/Theme.Angara">
         <activity
             android:name=".main.MenuActivity"
-            android:exported="true"
-            android:theme="@style/Theme.App.Starting">
+            android:theme="@style/Theme.App.Starting"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

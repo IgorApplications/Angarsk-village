@@ -4,69 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/forum_background_v"
     tools:context=".main.ChatActivity"
     android:id="@+id/chat">
 
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/messenger_bg"
+            android:scaleType="centerCrop"/>
+
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/action_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#323232"
-        android:clickable="true">
+            android:id="@+id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ToolbarStyle"
+            android:clickable="true">
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:onClick="goToMenu"
-            android:src="@drawable/ic_back_button" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="goToMenu"
+                android:src="@drawable/ic_back_button"/>
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:onClick="logOut"
-            android:src="@drawable/ic_log_out_button" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="logOut"
+                android:src="@drawable/ic_log_out_button"/>
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:src="@drawable/ic_report_white"
-            android:onClick="goToReports"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_report_w"
+                android:onClick="goToReports"/>
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:src="@drawable/ic_description"
-            android:onClick="showRules"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_description"
+                android:onClick="showRules"/>
 
         <ImageButton
-            android:id="@+id/moderation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:onClick="goToModeration"
-            android:src="@drawable/ic_admin"
-            android:visibility="invisible" />
+                android:id="@+id/moderation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="goToModeration"
+                android:src="@drawable/ic_admin"
+                android:visibility="invisible"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/forum"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:text="@string/messenger"
+                android:textSize="20sp"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -100,11 +105,12 @@
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/send_button">
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/messageField"
+            android:theme="@style/MessengerElBg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
+            android:focusable="false"
             android:hint="@string/message_field_hint"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -114,7 +120,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/ic_send_button"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/lite_green"
         app:borderWidth="0dp"
         app:elevation="6dp"
         android:layout_alignParentEnd="true"
@@ -142,17 +148,20 @@
     </RelativeLayout>
 
     <FrameLayout
-        android:id="@+id/blackout_root"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            android:id="@+id/blackout_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     <FrameLayout
-        android:id="@+id/description_scene_root"
-        android:layout_width="450dp"
-        android:layout_height="605dp"
-        android:layout_margin="5dp"
-        android:layout_centerInParent="true"
-        android:layout_above="@+id/send_button"/>
+            android:id="@+id/description_scene_root"
+            android:layout_width="450dp"
+            android:layout_height="605dp"
+            android:layout_above="@+id/send_button"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_centerInParent="true"/>
 
 
 </RelativeLayout>

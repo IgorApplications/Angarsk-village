@@ -30,9 +30,9 @@ public class FirebaseController {
     private final List<Report> reports = new ArrayList<>();
     private final List<Message> messages = new ArrayList<>();
 
-    private Optional<OnUpdateDatabase<Message>> onUpdateMessages = Optional.empty();
-    private Optional<OnUpdateDatabase<Report>> onUpdateReports = Optional.empty();
-    private Optional<OnUpdateDatabase<Account>> onUpdateAccounts = Optional.empty();
+    private OnUpdateDatabase<Message> onUpdateMessages;
+    private OnUpdateDatabase<Report> onUpdateReports;
+    private OnUpdateDatabase<Account> onUpdateAccounts;
 
     private boolean readyAccounts;
     private boolean readyReports;
@@ -88,15 +88,15 @@ public class FirebaseController {
     }
 
     public void setOnUpdateAccounts(OnUpdateDatabase<Account> onUpdateAccounts) {
-        this.onUpdateAccounts = Optional.of(onUpdateAccounts);
+        this.onUpdateAccounts = onUpdateAccounts;
     }
 
     public void setOnUpdateReports(OnUpdateDatabase<Report> onUpdateReports) {
-        this.onUpdateReports = Optional.of(onUpdateReports);
+        this.onUpdateReports = onUpdateReports;
     }
 
     public void setOnUpdateMessages(OnUpdateDatabase<Message> onUpdateMessages) {
-        this.onUpdateMessages = Optional.of(onUpdateMessages);
+        this.onUpdateMessages = onUpdateMessages;
     }
 
     public Account findAccount(long id) {
@@ -212,15 +212,21 @@ public class FirebaseController {
         downloadData(CHILD_ACCOUNTS, accounts, Account.class, () -> {
             updateUserAccount();
             readyAccounts = true;
-            onUpdateAccounts.ifPresent(l -> l.onUpdate(new ArrayList<>(accounts)));
+            if (onUpdateAccounts != null) {
+                onUpdateAccounts.onUpdate(new ArrayList<>(accounts));
+            }
         });
         downloadData(CHILD_MESSAGES, messages, Message.class, () -> {
             readyMessages = true;
-            onUpdateMessages.ifPresent(l -> l.onUpdate(new ArrayList<>(messages)));
+            if (onUpdateMessages != null) {
+                onUpdateMessages.onUpdate(new ArrayList<>(messages));
+            }
         });
         downloadData(CHILD_REPORTS, reports, Report.class, () -> {
             readyReports = true;
-            onUpdateReports.ifPresent(l -> l.onUpdate(new ArrayList<>(reports)));
+            if (onUpdateReports != null) {
+                onUpdateReports.onUpdate(new ArrayList<>(reports));
+            }
         });
     }
 
@@ -239,7 +245,8 @@ public class FirebaseController {
     }
 
     private <T> void downloadData(String child, List<T> storage, Class<T> clazz, OnActionListener onFinish) {
-       databaseReference.child(child).addValueEventListener(new ValueEventListener() {
+
+        databaseReference.child(child).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 storage.clear();

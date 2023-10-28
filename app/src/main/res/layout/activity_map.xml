@@ -14,7 +14,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/chocolate"
+        android:theme="@style/ButtonStyle"
         android:src="@drawable/ic_back_button"
         android:onClick="goToMenu"/>
 

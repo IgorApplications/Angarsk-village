@@ -6,14 +6,14 @@ plugins {
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.iapp.angara"
-        minSdk 24
-        targetSdk 32
-        versionCode 24
-        versionName "1.0.01.000"
+        minSdk 21
+        targetSdk 33
+        versionCode 26
+        versionName "1.00.002"
     }
 
     buildTypes {
@@ -23,8 +23,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     testOptions {
         execution 'ANDROIDX_TEST_ORCHESTRATOR'

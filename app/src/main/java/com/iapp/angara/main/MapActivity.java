@@ -12,7 +12,7 @@ import com.iapp.angara.R;
 import com.iapp.angara.attractions.AttractionActivity;
 import com.iapp.angara.attractions.AttractionType;
 import com.iapp.angara.ui.PlaceMark;
-import com.iapp.angara.util.Settings;
+import com.iapp.angara.util.Constants;
 import com.yandex.mapkit.Animation;
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
@@ -39,7 +39,7 @@ public class MapActivity extends AppCompatActivity {
     private final List<PlaceMark> placeMarkList = new ArrayList<>();
 
     public void goToMenu(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }
@@ -82,37 +82,37 @@ public class MapActivity extends AppCompatActivity {
 
     private void initGraphic() {
         PlaceMark angarskVillage = new PlaceMark(this, ANGARSK_VILLAGE, getString(R.string.app_name));
-        angarskVillage.addOnClickListener(() -> Settings.soundPlayer.getClick().play());
+        angarskVillage.addOnClickListener(() -> Constants.soundPlayer.getClick().play());
         angarskVillage.add(mapView);
 
         PlaceMark fourthManor = new PlaceMark(this, FOURTH_MANOR, getString(R.string.fourth_manor));
         fourthManor.addOnClickListener(() -> {
-            Settings.soundPlayer.getClick().play();
-            Settings.attractionType = AttractionType.FOURTH_MANOR;
+            Constants.soundPlayer.getClick().play();
+            Constants.attractionType = AttractionType.FOURTH_MANOR;
             goToAttraction();
         });
         fourthManor.add(mapView);
 
         PlaceMark churchArchangel = new PlaceMark(this, CHURCH_ARCHANGEL, getString(R.string.church_archangel));
         churchArchangel.addOnClickListener(() -> {
-            Settings.soundPlayer.getClick().play();
-            Settings.attractionType = AttractionType.CHURCH_ARCHANGEL;
+            Constants.soundPlayer.getClick().play();
+            Constants.attractionType = AttractionType.CHURCH_ARCHANGEL;
             goToAttraction();
         });
         churchArchangel.add(mapView);
 
         PlaceMark prison = new PlaceMark(this, PRISON, getString(R.string.prison));
         prison.addOnClickListener(() -> {
-            Settings.soundPlayer.getClick().play();
-            Settings.attractionType = AttractionType.PRISON;
+            Constants.soundPlayer.getClick().play();
+            Constants.attractionType = AttractionType.PRISON;
             goToAttraction();
         });
         prison.add(mapView);
 
         PlaceMark blacksmith = new PlaceMark(this, BLACKSMITH, getString(R.string.blacksmith));
         blacksmith.addOnClickListener(() -> {
-            Settings.soundPlayer.getClick().play();
-            Settings.attractionType = AttractionType.BLACKSMITH;
+            Constants.soundPlayer.getClick().play();
+            Constants.attractionType = AttractionType.BLACKSMITH;
             goToAttraction();
         });
         blacksmith.add(mapView);

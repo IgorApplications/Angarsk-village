@@ -1,7 +1,6 @@
 package com.iapp.angara.main;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.transition.Scene;
@@ -40,7 +39,7 @@ import com.iapp.angara.ui.DatabaseLoading;
 import com.iapp.angara.ui.ElementAdapter;
 import com.iapp.angara.ui.NavigateImageView;
 import com.iapp.angara.ui.OnChangeElement;
-import com.iapp.angara.util.Settings;
+import com.iapp.angara.util.Constants;
 import com.iapp.angara.util.TimeUtil;
 
 import java.util.Arrays;
@@ -86,19 +85,19 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public void goToMenu(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }
 
     public void goToReports(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         Intent intent = new Intent(this, ReportsActivity.class);
         startActivity(intent);
     }
 
     public void goToModeration(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         Intent intent = new Intent(this, ModerationActivity.class);
         startActivity(intent);
     }
@@ -115,7 +114,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public void logOut(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage(getString(R.string.message_log_out))
@@ -124,7 +123,7 @@ public class ChatActivity extends AppCompatActivity {
                     FirebaseAuth auth = FirebaseAuth.getInstance();
                     auth.signOut();
                     AuthUI.getInstance().signOut(this);
-                    Settings.firebaseController = null;
+                    Constants.firebaseController = null;
 
                     Intent intent = new Intent(this, MenuActivity.class);
                     startActivity(intent);
@@ -139,13 +138,13 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public void showRules(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         showDescriptionDialog();
     }
 
     public void sendMessage(View view) {
-        if (!Settings.firebaseController.isReady() || checkAccount()) return;
-        if (Settings.firebaseController.getUser().isMuted()) {
+        if (!Constants.firebaseController.isReady() || checkAccount()) return;
+        if (Constants.firebaseController.getUser().isMuted()) {
             Toast.makeText(this, getString(R.string.mute_alert), Toast.LENGTH_LONG).show();
             return;
         }
@@ -171,10 +170,10 @@ public class ChatActivity extends AppCompatActivity {
         }
 
         sentMessage = true;
-        Account user = Settings.firebaseController.getUser();
-        Message message = new Message(Settings.firebaseController.generateMessageId(), Settings.firebaseController.getUser().getId(),
+        Account user = Constants.firebaseController.getUser();
+        Message message = new Message(Constants.firebaseController.generateMessageId(), Constants.firebaseController.getUser().getId(),
                 user.getEmail(), user.getName(), editText.getText().toString());
-        Settings.firebaseController.sendMessage(message);
+        Constants.firebaseController.sendMessage(message);
 
 
         editText.setText("");
@@ -187,8 +186,8 @@ public class ChatActivity extends AppCompatActivity {
 
     private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
         if (result.getResultCode() == RESULT_OK && FirebaseAuth.getInstance().getCurrentUser() != null) {
-            if (Settings.firebaseController == null) {
-                Settings.firebaseController = new FirebaseController(FirebaseAuth.getInstance().getCurrentUser());
+            if (Constants.firebaseController == null) {
+                Constants.firebaseController = new FirebaseController(FirebaseAuth.getInstance().getCurrentUser());
             }
             displayAllData();
         } else {
@@ -225,8 +224,8 @@ public class ChatActivity extends AppCompatActivity {
     private void logUser() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            if (Settings.firebaseController == null) {
-                Settings.firebaseController = new FirebaseController(user);
+            if (Constants.firebaseController == null) {
+                Constants.firebaseController = new FirebaseController(user);
             }
             displayAllData();
         } else {
@@ -260,17 +259,15 @@ public class ChatActivity extends AppCompatActivity {
             messageUser.setText(model.getUserName());
             messageTime.setText(TimeUtil.defineTimeView(this, model.getTime()));
 
-            if (Settings.firebaseController.findAccount(model.getUserId()).isModerator()) {
+            if (Constants.firebaseController.findAccount(model.getUserId()).isModerator()) {
                 messageUser.setTextColor(Color.RED);
-            } else {
-                messageUser.setTextColor(Color.BLACK);
             }
 
             helpButton.setOnClickListener(v1 -> showReportDialog(model));
             deleteButton.setOnClickListener(v1 -> showDeleteDialog(model));
             pinButton.setOnClickListener(v1 -> pushPin(model));
 
-            if (Settings.firebaseController.getUser().isModerator()) {
+            if (Constants.firebaseController.getUser().isModerator()) {
                 deleteButton.setVisibility(View.VISIBLE);
                 pinButton.setVisibility(View.VISIBLE);
             } else {
@@ -278,7 +275,7 @@ public class ChatActivity extends AppCompatActivity {
                 pinButton.setVisibility(View.INVISIBLE);
             }
 
-            if (model.getUserId() == Settings.firebaseController.getUser().getId()) {
+            if (model.getUserId() == Constants.firebaseController.getUser().getId()) {
                 personMessageText.setText(model.getMessage());
                 personMessageText.setVisibility(View.VISIBLE);
                 userMessageText.setVisibility(View.INVISIBLE);
@@ -299,14 +296,14 @@ public class ChatActivity extends AppCompatActivity {
         listOfMessages.setAdapter(adapter);
 
         sendButton.setClickable(false);
-        Settings.loading.showWaiting(this, loadingLayout, () -> {
+        Constants.loading.showWaiting(this, loadingLayout, () -> {
             adapter.clear();
             checkAccount();
-            updateMessages(adapter, Settings.firebaseController.getMessages());
-            updatePin(Settings.firebaseController.getMessages());
+            updateMessages(adapter, Constants.firebaseController.getMessages());
+            updatePin(Constants.firebaseController.getMessages());
             sendButton.setClickable(true);
 
-            Settings.firebaseController.setOnUpdateMessages(elements -> {
+            Constants.firebaseController.setOnUpdateMessages(elements -> {
                 adapter.clear();
                 updateMessages(adapter, elements);
                 updatePin(elements);
@@ -318,7 +315,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
                 Runnable task = () -> runOnUiThread(() -> listOfMessages.setSelectionFromTop(++index, top));
-                Settings.getThreadPool().execute(task);
+                Constants.getThreadPool().execute(task);
             });
         }, false);
     }
@@ -340,8 +337,8 @@ public class ChatActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this)
                         .setTitle(getString(R.string.reports))
                         .setItems(itemsUI, (dialog, which) -> {
-                            Account user = Settings.firebaseController.getUser();
-                            sendReport(new Report(Settings.firebaseController.generateReportId(), user.getId(), user.getName(),
+                            Account user = Constants.firebaseController.getUser();
+                            sendReport(new Report(Constants.firebaseController.generateReportId(), user.getId(), user.getName(),
                                     message.getUserId(), message.getUserName(), items[which], message.getMessage()));
                         })
                         .create();
@@ -356,7 +353,7 @@ public class ChatActivity extends AppCompatActivity {
                         .setNegativeButton(getString(R.string.cancel), (dialog, which) -> {})
                         .setPositiveButton(getString(R.string.delete), (dialog, which) -> {
                             if (message.isPinned()) showedPin = false;
-                            Settings.firebaseController.removeMessage(message);
+                            Constants.firebaseController.removeMessage(message);
                         })
                         .create();
         confirmDialog.show();
@@ -369,15 +366,17 @@ public class ChatActivity extends AppCompatActivity {
                         .setMessage(getString(R.string.confirmation_report))
                         .setNegativeButton(getString(R.string.cancel), (dialog, which) -> {})
                         .setPositiveButton(getString(R.string.send), (dialog, which) -> {
-                            Settings.firebaseController.sendReport(report);
+                            Constants.firebaseController.sendReport(report);
                             Toast.makeText(this, getString(R.string.thanks_help), Toast.LENGTH_SHORT).show();
                         })
                         .create();
         confirmDialog.show();
     }
 
-    private void updateMessages(ElementAdapter<Message> adapter, List<Message> messages) {;
-        messages.forEach(adapter::add);
+    private void updateMessages(ElementAdapter<Message> adapter, List<Message> messages) {
+        for (Message message : messages) {
+            adapter.add(message);
+        }
     }
 
     private void updatePin(List<Message> messages) {
@@ -404,7 +403,7 @@ public class ChatActivity extends AppCompatActivity {
         makeTransition(R.id.pin_scene_root, R.layout.pin);
         pinnedMessage = message;
         ImageButton closePin = findViewById(R.id.hide_pin);
-        if (Settings.firebaseController.getUser().isModerator()) closePin.setVisibility(View.VISIBLE);
+        if (Constants.firebaseController.getUser().isModerator()) closePin.setVisibility(View.VISIBLE);
         TextView textPin = findViewById(R.id.text_pin);
         textPin.setText(message.getMessage());
         showedPin = true;
@@ -412,7 +411,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private void updatePinned(Message message, boolean pinnedStatus) {
         message.setPinned(pinnedStatus);
-        Settings.firebaseController.updateMessage(message);
+        Constants.firebaseController.updateMessage(message);
     }
 
     private void showDescriptionDialog() {
@@ -424,7 +423,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void closeRules() {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
 
         sendButton.setClickable(true);
         makeTransition(R.id.blackout_root, R.layout.empty);
@@ -433,11 +432,11 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private boolean checkAccount() {
-        if (Settings.firebaseController.getUser().isModerator()) {
+        if (Constants.firebaseController.getUser().isModerator()) {
             moderation.setVisibility(View.VISIBLE);
         }
 
-        if (Settings.firebaseController.getUser().isBanned()) {
+        if (Constants.firebaseController.getUser().isBanned()) {
             Toast.makeText(this, getString(R.string.ban_alert), Toast.LENGTH_LONG).show();
             goToMenu(null);
             return true;
@@ -465,18 +464,12 @@ public class ChatActivity extends AppCompatActivity {
         moderation = findViewById(R.id.moderation);
         sendButton = findViewById(R.id.send_button);
 
-        if (Settings.loading == null) {
-            Settings.loading = new DatabaseLoading();
+        if (Constants.loading == null) {
+            Constants.loading = new DatabaseLoading();
         }
     }
 
     private void updateBackgroundOrientation() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            chatLayout.setBackgroundResource(R.drawable.forum_background_v);
-        } else {
-            chatLayout.setBackgroundResource(R.drawable.forum_background_h);
-        }
-
         if (descriptionDisplay) {
             showDescriptionDialog();
         }

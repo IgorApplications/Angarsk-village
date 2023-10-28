@@ -3,15 +3,69 @@
     <!-- Base application theme. -->
 
     <style name="Theme.Angara" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="android:colorPrimary">@color/black</item>
-        <item name="windowSplashScreenBackground">@color/black</item>
-        <item name="colorPrimaryDark">@color/black</item>
+        <item name="android:colorPrimary">@color/white</item>
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <style name="ToolbarStyle">
+        <item name="android:background">@color/chocolate</item>
+    </style>
+
+    <style name="TextStyle">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/chocolate</item>
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
+    <style name="MessengerElBg">
+        <item name="android:backgroundTint">@color/lite_gray</item>
+        <item name="android:background">@color/lite_gray</item>
+        <item name="android:textColorHint">@color/black</item>
+    </style>
+
+    <style name="MessageItems">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorLink">@color/dark_blue</item>
+    </style>
+
+    <style name="Message">
+        <item name="android:textColor">@color/black</item>
+        <item name="bubbleColor">@color/lite_gray</item>
+        <item name="android:textColorLink">@color/dark_blue</item>
+    </style>
+
+    <style name="SelfMessage">
+        <item name="android:textColor">@color/black</item>
+        <item name="bubbleColor">@color/lettuce</item>
+        <item name="android:textColorLink">@color/dark_blue</item>
+    </style>
+
+    <!-- Messenger Icon Styles -->
+
+    <style name="ReportIconStyle">
+        <item name="android:src">@drawable/ic_report_d</item>
+    </style>
+
+    <style name="PinIconStyle">
+        <item name="android:src">@drawable/ic_pin_d</item>
+    </style>
+
+    <style name="DelIconStyle">
+        <item name="android:src">@drawable/ic_del_d</item>
+    </style>
+
+    <style name="HidePinStyle">
+        <item name="android:src">@drawable/ic_close_d</item>
+    </style>
 
     <!-- Authorization graphic theme -->
 

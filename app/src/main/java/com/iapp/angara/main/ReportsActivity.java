@@ -4,7 +4,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -19,12 +18,13 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.iapp.angara.R;
+import com.iapp.angara.database.Account;
 import com.iapp.angara.database.Report;
 import com.iapp.angara.ui.ElementAdapter;
 import com.iapp.angara.ui.OnActionListener;
 import com.iapp.angara.ui.OnChangeElement;
 import com.iapp.angara.util.SearchUtil;
-import com.iapp.angara.util.Settings;
+import com.iapp.angara.util.Constants;
 
 import java.util.List;
 
@@ -53,18 +53,16 @@ public class ReportsActivity extends AppCompatActivity {
 
         initGraphics();
         initData();
-
-        updateBackgroundOrientation();
     }
 
     public void goToChat(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         Intent intent = new Intent(this, ChatActivity.class);
         startActivity(intent);
     }
 
     public void search(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         request = searchField.getText().toString();
         initData();
     }
@@ -92,7 +90,7 @@ public class ReportsActivity extends AppCompatActivity {
                                 report.setReceived(false);
                                 report.setRejected(true);
                             }
-                            Settings.firebaseController.updateReport(report);
+                            Constants.firebaseController.updateReport(report);
                         })
                         .create();
         confirmDialog.show();
@@ -101,13 +99,14 @@ public class ReportsActivity extends AppCompatActivity {
     private void initData() {
         OnActionListener listenerReports = () -> {
 
-            if (Settings.firebaseController.getUser().isModerator() && !headerRemoved) {
+            if (Constants.firebaseController.getUser().isModerator() && !headerRemoved) {
                 header.addView(searchInput);
                 header.addView(searchButton);
                 headerRemoved = true;
             }
 
             OnChangeElement<Report> onChange = (view, report) -> {
+
                 saveScrollPosition();
 
                 TextView contentReportId = view.findViewById(R.id.content_report_id),
@@ -131,7 +130,7 @@ public class ReportsActivity extends AppCompatActivity {
 
                 if (!report.isReviewed()) {
                     status.setText(getString(R.string.under_consideration));
-                    status.setTextColor(Color.BLACK);
+                    status.setTextColor(Color.YELLOW);
                 } else if (report.isReceived()) {
                     status.setText(getString(R.string.received));
                     status.setTextColor(Color.GREEN);
@@ -147,21 +146,21 @@ public class ReportsActivity extends AppCompatActivity {
             };
 
             ElementAdapter<Report> adapter = new ElementAdapter<>(this,
-                    Settings.firebaseController.getUser().isModerator() ? R.layout.list_item_mod_reports : R.layout.list_item_reports, onChange);
+                    Constants.firebaseController.getUser().isModerator() ? R.layout.list_item_mod_reports : R.layout.list_item_reports, onChange);
             reportsView.setAdapter(adapter);
 
-            Settings.firebaseController.setOnUpdateReports(reports -> {
+            Constants.firebaseController.setOnUpdateReports(reports -> {
                 adapter.clear();
                 updateReports(adapter, reports);
 
                 Runnable task = () -> runOnUiThread(() -> reportsView.setSelectionFromTop(index, top));
-                Settings.getThreadPool().execute(task);
+                Constants.getThreadPool().execute(task);
             });
-            Settings.loading.showWaiting(this,
-                    loadingLayout, () -> updateReports(adapter, Settings.firebaseController.getReports()), false);
+            Constants.loading.showWaiting(this,
+                    loadingLayout, () -> updateReports(adapter, Constants.firebaseController.getReports()), false);
         };
 
-        Settings.loading.showWaitingAccounts(this, loadingLayout, listenerReports, true);
+        Constants.loading.showWaitingAccounts(this, loadingLayout, listenerReports, true);
     }
 
     private void saveScrollPosition() {
@@ -171,12 +170,16 @@ public class ReportsActivity extends AppCompatActivity {
     }
 
     private void updateReports(ElementAdapter<Report> adapter, List<Report> reports) {
-        if (!Settings.firebaseController.getUser().isModerator()) {
+        if (!Constants.firebaseController.getUser().isModerator()) {
+
             reports = SearchUtil.parseReportSearchParam(this,
-                    "Sender Id:" + Settings.firebaseController.getUser().getId(), reports);
+                    getString(R.string.sender_id) + Constants.firebaseController.getUser().getId(), reports);
         }
+
         reports = SearchUtil.parseReportSearchParam(this, request, reports);
-        reports.forEach(adapter::add);
+        for (Report report : reports) {
+            adapter.add(report);
+        }
     }
 
     private void initGraphics() {
@@ -190,13 +193,5 @@ public class ReportsActivity extends AppCompatActivity {
 
         header.removeView(searchButton);
         header.removeView(searchInput);
-    }
-
-    private void updateBackgroundOrientation() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            reportsLayout.setBackgroundResource(R.drawable.forum_background_v);
-        } else {
-            reportsLayout.setBackgroundResource(R.drawable.forum_background_h);
-        }
     }
 }

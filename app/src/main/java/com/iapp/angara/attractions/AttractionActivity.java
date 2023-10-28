@@ -2,19 +2,23 @@ package com.iapp.angara.attractions;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.transition.Scene;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
-import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,8 +30,9 @@ import com.iapp.angara.main.ListActivity;
 import com.iapp.angara.main.MapActivity;
 import com.iapp.angara.ui.NavigateImageView;
 import com.iapp.angara.ui.OnSwipeListener;
+import com.iapp.angara.util.Language;
 import com.iapp.angara.util.Mode;
-import com.iapp.angara.util.Settings;
+import com.iapp.angara.util.Constants;
 import com.iapp.angara.util.Sound;
 
 import java.util.Locale;
@@ -38,6 +43,13 @@ public class AttractionActivity extends AppCompatActivity {
 
     private static final int[] layoutPath = new int[] {R.layout.first_background, R.layout.second_background};
 
+    private static final int[] backgroundId = new int[] {R.id.first_bg, R.id.second_bg};
+
+    /**
+     * These matrices specifically exist for two modes (vertical/horizontal),
+     * so that you can use specialized images for each mode and have
+     * them cropped through the “center crop”
+     * */
     private static final int[][] prisonBackgrounds = new int[][] {
             {R.drawable.prison1_v, R.drawable.prison1_h},
             {R.drawable.priosn2_v, R.drawable.priosn2_h}
@@ -64,6 +76,7 @@ public class AttractionActivity extends AppCompatActivity {
     private int indexBackgroundLayout;
 
     private RelativeLayout backgroundLayout;
+    private ImageView background;
     private Button description;
     private Button voice;
     private NavigateImageView navigateLeft;
@@ -87,31 +100,31 @@ public class AttractionActivity extends AppCompatActivity {
 
         initGraphics();
         updateNavigationButtons();
-        updateBackgroundOrientation();
+        updateBackground();
     }
 
     public void goToBack(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
 
         audioDescription.stop();
-        if (Settings.mainMusicOn) {
-            Settings.soundPlayer.getMain().playConst();
+        if (Constants.mainMusicOn) {
+            Constants.soundPlayer.getMain().playConst();
         }
 
-        if (Settings.modeActivity == Mode.LIST) startActivity(new Intent(this, ListActivity.class));
+        if (Constants.modeActivity == Mode.LIST) startActivity(new Intent(this, ListActivity.class));
         else startActivity(new Intent(this, MapActivity.class));
     }
 
     public void playSound(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
 
         if (audioDescription.isPlaying()) {
             audioDescription.stop();
-            if (Settings.mainMusicOn) {
-                Settings.soundPlayer.getMain().playConst();
+            if (Constants.mainMusicOn) {
+                Constants.soundPlayer.getMain().playConst();
             }
         } else {
-            Settings.soundPlayer.getMain().stop();
+            Constants.soundPlayer.getMain().stop();
             audioDescription.play();
         }
 
@@ -119,13 +132,13 @@ public class AttractionActivity extends AppCompatActivity {
     }
 
     public void moveLeft(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         backgroundPosition--;
         moveBackground();
     }
 
     public void moveRight(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         backgroundPosition++;
         moveBackground();
     }
@@ -133,8 +146,8 @@ public class AttractionActivity extends AppCompatActivity {
     @Override
     public void finish() {
         audioDescription.stop();
-        if (Settings.mainMusicOn) {
-            Settings.soundPlayer.getMain().playConst();
+        if (Constants.mainMusicOn) {
+            Constants.soundPlayer.getMain().playConst();
         }
         super.finish();
     }
@@ -154,7 +167,7 @@ public class AttractionActivity extends AppCompatActivity {
     }
 
     private void closeDescription() {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
 
         makeTransition(R.id.blackout_root, R.layout.empty);
         makeTransition(R.id.description_scene_root, R.layout.empty);
@@ -162,11 +175,12 @@ public class AttractionActivity extends AppCompatActivity {
     }
 
     private void moveBackground() {
-        Pair<Integer, Integer> nextBackground = getNextBackgroundLayout();
-        makeTransition(R.id.background_scene_root, nextBackground.second);
-        backgroundLayout = findViewById(nextBackground.first);
+        int[] nextBackground = getNextBackgroundLayout();
+        makeTransition(R.id.background_scene_root, nextBackground[1]);
+        backgroundLayout = findViewById(nextBackground[0]);
+        background = findViewById(nextBackground[2]);
 
-        updateBackgroundOrientation();
+        updateBackground();
         updateNavigationButtons();
     }
 
@@ -184,13 +198,17 @@ public class AttractionActivity extends AppCompatActivity {
 
     private void initGraphics() {
         if (!initialised) {
+            int[] next = getNextBackgroundLayout();
+
+            backgroundLayout = findViewById(next[0]);
+            background = findViewById(next[2]);
+
             voice = findViewById(R.id.voice);
-            backgroundLayout = findViewById(getNextBackgroundLayout().first);
             navigateLeft = findViewById(R.id.navigate_left);
             navigateRight = findViewById(R.id.navigate_right);
             description = findViewById(R.id.description);
             description.setOnClickListener(v -> {
-                Settings.soundPlayer.getClick().play();
+                Constants.soundPlayer.getClick().play();
                 showDescriptionDialog();
             });
 
@@ -203,35 +221,35 @@ public class AttractionActivity extends AppCompatActivity {
     private void initData() {
         Language language = getSystemLanguage();
 
-        switch (Settings.attractionType) {
+        switch (Constants.attractionType) {
             case PRISON:
                 backgrounds = prisonBackgrounds;
-                if (language == Language.RUSSIAN) audioDescription = Settings.soundPlayer.getRuPrison();
-                else audioDescription = Settings.soundPlayer.getEnBlacksmith();
+                if (language == Language.RUSSIAN) audioDescription = Constants.soundPlayer.getRuPrison();
+                else audioDescription = Constants.soundPlayer.getEnBlacksmith();
                 title = getString(R.string.prison);
                 descriptionText = getString(R.string.prison_description);
                 break;
 
             case FOURTH_MANOR:
                 backgrounds = fourthBackgrounds;
-                if (language == Language.RUSSIAN) audioDescription = Settings.soundPlayer.getRuFourthManor();
-                else audioDescription = Settings.soundPlayer.getEnFourthManor();
+                if (language == Language.RUSSIAN) audioDescription = Constants.soundPlayer.getRuFourthManor();
+                else audioDescription = Constants.soundPlayer.getEnFourthManor();
                 title = getString(R.string.fourth_manor);
                 descriptionText = getString(R.string.fourth_manor_description);
                 break;
 
             case CHURCH_ARCHANGEL:
                 backgrounds = churchArchangelBackgrounds;
-                if (language == Language.RUSSIAN) audioDescription = Settings.soundPlayer.getRuChurchArchangel();
-                else audioDescription = Settings.soundPlayer.getEnChurchArchangel();
+                if (language == Language.RUSSIAN) audioDescription = Constants.soundPlayer.getRuChurchArchangel();
+                else audioDescription = Constants.soundPlayer.getEnChurchArchangel();
                 title = getString(R.string.church_archangel);
                 descriptionText = getString(R.string.church_archangel_description);
                 break;
 
             case BLACKSMITH:
                 backgrounds = blacksmithBackgrounds;
-                if (language == Language.RUSSIAN) audioDescription = Settings.soundPlayer.getRuBlacksmith();
-                else audioDescription = Settings.soundPlayer.getEnBlacksmith();
+                if (language == Language.RUSSIAN) audioDescription = Constants.soundPlayer.getRuBlacksmith();
+                else audioDescription = Constants.soundPlayer.getEnBlacksmith();
                 title = getString(R.string.blacksmith);
                 descriptionText = getString(R.string.blacksmith_description);
                 break;
@@ -249,12 +267,20 @@ public class AttractionActivity extends AppCompatActivity {
         }
     }
 
-    private void updateBackgroundOrientation() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            backgroundLayout.setBackgroundResource(backgrounds[backgroundPosition][0]);
-        } else {
-            backgroundLayout.setBackgroundResource(backgrounds[backgroundPosition][1]);
-        }
+    private void updateBackground() {
+        runOnUiThread(() -> {
+            Resources res = getResources();
+            Bitmap bitmap;
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                bitmap = BitmapFactory.decodeResource(res, backgrounds[backgroundPosition][0]);
+            } else {
+                bitmap = BitmapFactory.decodeResource(res, backgrounds[backgroundPosition][1]);
+            }
+
+            BitmapDrawable drawable = new BitmapDrawable(res, bitmap);
+            background.setImageDrawable(drawable);
+        });
+
 
         if (descriptionDisplay) {
             showDescriptionDialog();
@@ -269,11 +295,17 @@ public class AttractionActivity extends AppCompatActivity {
         else navigateRight.setVisibility(View.INVISIBLE);
     }
 
-    private Pair<Integer, Integer> getNextBackgroundLayout() {
-        Pair<Integer, Integer> nextBackground = new Pair<>(layoutId[indexBackgroundLayout], layoutPath[indexBackgroundLayout]);
+    private int[] getNextBackgroundLayout() {
+        int[] next = new int[3];
+
+        next[0] = layoutId[indexBackgroundLayout];
+        next[1] = layoutPath[indexBackgroundLayout];
+        next[2] = backgroundId[indexBackgroundLayout];
+
         indexBackgroundLayout++;
         if (indexBackgroundLayout == 2) indexBackgroundLayout = 0;
-        return nextBackground;
+
+        return next;
     }
 
     private void makeTransition(int rootId, int layout) {
@@ -312,8 +344,5 @@ public class AttractionActivity extends AppCompatActivity {
         }
     }
 
-    private enum Language {
-        ENGLISH,
-        RUSSIAN
-    }
+
 }

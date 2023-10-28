@@ -11,6 +11,56 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <style name="ToolbarStyle">
+        <item name="android:background">@color/chocolate</item>
+    </style>
+
+    <style name="TextStyle">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="MessengerElBg">
+        <item name="android:backgroundTint">@color/dark_gray</item>
+        <item name="android:background">@color/dark_gray</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+
+    <style name="MessageItems">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorLink">@color/lite_blue</item>
+    </style>
+
+    <style name="Message">
+        <item name="android:textColor">@color/white</item>
+        <item name="bubbleColor">@color/dark_gray</item>
+        <item name="android:textColorLink">@color/lite_blue</item>
+    </style>
+
+    <style name="SelfMessage">
+        <item name="android:textColor">@color/white</item>
+        <item name="bubbleColor">@color/dark_green</item>
+        <item name="android:textColorLink">@color/lite_blue</item>
+    </style>
+
+
+    <!-- Messenger Icon Styles -->+
+
+    <style name="ReportIconStyle">
+        <item name="android:src">@drawable/ic_report_w</item>
+    </style>
+
+    <style name="PinIconStyle">
+        <item name="android:src">@drawable/ic_pin_w</item>
+    </style>
+
+    <style name="DelIconStyle">
+        <item name="android:src">@drawable/ic_del_w</item>
+    </style>
+
+    <style name="HidePinStyle">
+        <item name="android:src">@drawable/ic_close_w</item>
+    </style>
+
     <!-- Authorization graphic theme -->
     <style name="Theme.Auth" parent="Theme.AppCompat.NoActionBar">
         <item name="android:colorPrimary">@color/black</item>

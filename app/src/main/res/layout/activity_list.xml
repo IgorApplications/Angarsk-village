@@ -36,10 +36,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:theme="@style/TextStyle"
                 android:textSize="25sp"
                 android:gravity="center"
                 android:text="@string/prison"
+                android:textColor="@color/white"
                 android:layout_marginBottom="15dp"/>
 
             <com.iapp.angara.ui.NavigateImageView
@@ -52,10 +53,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:theme="@style/TextStyle"
                 android:textSize="25sp"
                 android:gravity="center"
                 android:text="@string/fourth_manor"
+                android:textColor="@color/white"
                 android:layout_marginBottom="15dp"/>
 
             <com.iapp.angara.ui.NavigateImageView
@@ -68,8 +70,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:theme="@style/TextStyle"
                 android:textSize="25sp"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:text="@string/church_archangel"
                 android:layout_marginBottom="15dp"/>
@@ -85,10 +88,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:theme="@style/TextStyle"
                 android:textSize="25sp"
                 android:gravity="center"
                 android:text="@string/blacksmith"
+                android:textColor="@color/white"
                 android:layout_marginBottom="15dp"/>
 
         </LinearLayout>
@@ -98,7 +102,7 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/chocolate"
+        android:theme="@style/ButtonStyle"
         android:src="@drawable/ic_back_button"
         android:onClick="goToMenu"/>
 

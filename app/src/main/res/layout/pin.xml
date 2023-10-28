@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pinLayout"
     android:layout_width="match_parent"
-    android:layout_height="47dp"
-    android:background="@color/gray"
+    android:layout_height="wrap_content"
+    android:theme="@style/MessengerElBg"
     tools:context=".main.ChatActivity"
     android:onClick="makePinClick">
 
@@ -17,19 +17,20 @@
         android:background="?android:attr/selectableItemBackground"
         android:scaleX="0.6"
         android:scaleY="0.6"
-        android:src="@drawable/ic_close"
+        android:padding="10dp"
+        android:theme="@style/HidePinStyle"
         android:onClick="hidePin"/>
 
     <TextView
         android:id="@+id/text_pin"
+        android:theme="@style/TextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:autoLink="all"
         android:layout_centerInParent="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"/>
 
 </RelativeLayout>

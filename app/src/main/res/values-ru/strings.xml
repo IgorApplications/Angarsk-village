@@ -6,7 +6,7 @@
     <string name="description_app_name" translatable="true">aрхитектурно-этнографичсекий музей </string>
     <string name="map_mode" translatable="true">Режим карты</string>
     <string name="list_mode" translatable="true">Режим списка</string>
-    <string name="forum" translatable="true">Форум</string>
+    <string name="messenger" translatable="true">Мессенджер</string>
     <string name="unavailable" translatable="false">Временно недоступно из-за правил платформы</string>
 
     <!-- strings of Map Activity -->

@@ -6,7 +6,7 @@
     <string name="description_app_name" translatable="true">architectural ethnographic museum</string>
     <string name="map_mode" translatable="true">Map mode</string>
     <string name="list_mode" translatable="true">List mode</string>
-    <string name="forum" translatable="true">Forum</string>
+    <string name="messenger" translatable="true">Messenger</string>
     <string name="unavailable" translatable="false">Temporarily unavailable due to platform rules</string>
 
     <!-- strings of Map Activity -->

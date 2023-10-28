@@ -3,7 +3,7 @@ package com.iapp.angara.ui;
 import android.app.Activity;
 import android.view.View;
 
-import com.iapp.angara.util.Settings;
+import com.iapp.angara.util.Constants;
 
 public class DatabaseLoading {
 
@@ -13,7 +13,7 @@ public class DatabaseLoading {
         Runnable task = () -> {
             activity.runOnUiThread(() -> loading.setVisibility(View.VISIBLE));
 
-            while (!Settings.firebaseController.isReady()) {
+            while (!Constants.firebaseController.isReady()) {
                 Thread.yield();
                 try {
                     Thread.sleep(50);
@@ -27,7 +27,7 @@ public class DatabaseLoading {
                 if (!endVisible) loading.setVisibility(View.INVISIBLE);
             });
         };
-        Settings.getThreadPool().execute(task);
+        Constants.getThreadPool().execute(task);
     }
 
     public void showWaitingAccounts(Activity activity, View loading,
@@ -35,7 +35,7 @@ public class DatabaseLoading {
         Runnable task = () -> {
             activity.runOnUiThread(() -> loading.setVisibility(View.VISIBLE));
 
-            while (!Settings.firebaseController.isReadyAccounts()) {
+            while (!Constants.firebaseController.isReadyAccounts()) {
                 Thread.yield();
                 try {
                     Thread.sleep(50);
@@ -49,7 +49,7 @@ public class DatabaseLoading {
                 if (!endVisible) loading.setVisibility(View.INVISIBLE);
             });
         };
-        Settings.getThreadPool().execute(task);
+        Constants.getThreadPool().execute(task);
     }
 
     public void showWaitingMessages(Activity activity, View loading,
@@ -57,7 +57,7 @@ public class DatabaseLoading {
         Runnable task = () -> {
             activity.runOnUiThread(() -> loading.setVisibility(View.VISIBLE));
 
-            while (!Settings.firebaseController.isReadyMessages()) {
+            while (!Constants.firebaseController.isReadyMessages()) {
                 Thread.yield();
                 try {
                     Thread.sleep(50);
@@ -71,7 +71,7 @@ public class DatabaseLoading {
                 if (!endVisible) loading.setVisibility(View.INVISIBLE);
             });
         };
-        Settings.getThreadPool().execute(task);
+        Constants.getThreadPool().execute(task);
     }
 
     public void showWaitingReports(Activity activity, View loading,
@@ -79,7 +79,7 @@ public class DatabaseLoading {
         Runnable task = () -> {
             activity.runOnUiThread(() -> loading.setVisibility(View.VISIBLE));
 
-            while (!Settings.firebaseController.isReadyReports()) {
+            while (!Constants.firebaseController.isReadyReports()) {
                 Thread.yield();
                 try {
                     Thread.sleep(50);
@@ -93,6 +93,6 @@ public class DatabaseLoading {
                 if (!endVisible) loading.setVisibility(View.INVISIBLE);
             });
         };
-        Settings.getThreadPool().execute(task);
+        Constants.getThreadPool().execute(task);
     }
 }

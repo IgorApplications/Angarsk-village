@@ -5,31 +5,36 @@
     android:id="@+id/moderation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/forum_background_v"
     tools:context=".main.ModerationActivity">
 
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/messenger_bg"
+            android:scaleType="centerCrop"/>
+
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/action_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#323232"
-        android:clickable="true">
+            android:id="@+id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ToolbarStyle"
+            android:clickable="true">
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:onClick="goToChat"
-            android:src="@drawable/ic_back_button" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="goToChat"
+                android:src="@drawable/ic_back_button"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/moderation"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/moderation"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -40,10 +45,12 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/search_button">
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/search_field"
+            android:theme="@style/MessengerElBg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusable="false"
             android:textColorHint="@color/black"
             android:hint="@string/search_hint"/>
 
@@ -54,7 +61,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/ic_search"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/lite_green"
         app:borderWidth="0dp"
         app:elevation="6dp"
         android:layout_alignParentEnd="true"

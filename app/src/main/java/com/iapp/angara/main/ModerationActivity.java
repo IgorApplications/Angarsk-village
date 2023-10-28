@@ -2,7 +2,6 @@ package com.iapp.angara.main;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -23,7 +22,7 @@ import com.iapp.angara.database.OnUpdateDatabase;
 import com.iapp.angara.ui.ElementAdapter;
 import com.iapp.angara.ui.OnChangeElement;
 import com.iapp.angara.util.SearchUtil;
-import com.iapp.angara.util.Settings;
+import com.iapp.angara.util.Constants;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -59,18 +58,16 @@ public class ModerationActivity extends AppCompatActivity {
 
         initGraphics();
         initData();
-
-        updateBackgroundOrientation();
     }
 
     public void search(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         request = searchField.getText().toString();
         initData();
     }
 
     public void goToChat(View view) {
-        Settings.soundPlayer.getClick().play();
+        Constants.soundPlayer.getClick().play();
         Intent intent = new Intent(this, ChatActivity.class);
         startActivity(intent);
     }
@@ -120,15 +117,15 @@ public class ModerationActivity extends AppCompatActivity {
                 R.layout.list_item_moderation, onChange);
         accountsView.setAdapter(adapter);
 
-        Settings.firebaseController.setOnUpdateAccounts((OnUpdateDatabase<Account>) accounts -> {
+        Constants.firebaseController.setOnUpdateAccounts(accounts -> {
             adapter.clear();
             updateAccounts(adapter, accounts);
 
             Runnable task = () -> runOnUiThread(() -> accountsView.setSelectionFromTop(index, top));
-            Settings.getThreadPool().execute(task);
+            Constants.getThreadPool().execute(task);
         });
-        Settings.loading.showWaiting(this, loadingLayout,
-                () -> updateAccounts(adapter, Settings.firebaseController.getAccounts()), false);
+        Constants.loading.showWaiting(this, loadingLayout,
+                () -> updateAccounts(adapter, Constants.firebaseController.getAccounts()), false);
     }
 
     private void saveScrollPosition() {
@@ -139,7 +136,10 @@ public class ModerationActivity extends AppCompatActivity {
 
     private void updateAccounts(ElementAdapter<Account> adapter, List<Account> accounts) {
         List<Account> finedAccounts = SearchUtil.parseAccountSearchParam(this, request, accounts);
-        finedAccounts.forEach(adapter::add);
+
+        for (Account account : finedAccounts) {
+            adapter.add(account);
+        }
     }
 
     private void showDialogBan(Account applied, Button applyBan) {
@@ -157,7 +157,7 @@ public class ModerationActivity extends AppCompatActivity {
                 .setPositiveButton(getString(R.string.ban), (dialog, which) -> {
                     applied.ban();
                     updateReputation(applied, BAN, edittext.getText().toString());
-                    Settings.firebaseController.updateAccount(applied);
+                    Constants.firebaseController.updateAccount(applied);
 
                     applyBan.setText(UNBAN);
                     applyBan.setOnClickListener(v -> showDialogUnban(applied, applyBan));
@@ -182,7 +182,7 @@ public class ModerationActivity extends AppCompatActivity {
                 .setPositiveButton(getString(R.string.mute), (dialog, which) -> {
                     applied.mute();
                     updateReputation(applied, MUTE, edittext.getText().toString());
-                    Settings.firebaseController.updateAccount(applied);
+                    Constants.firebaseController.updateAccount(applied);
 
                     applyMute.setText(UNMUTE);
                     applyMute.setOnClickListener(v -> showDialogUnmute(applied, applyMute));
@@ -207,7 +207,7 @@ public class ModerationActivity extends AppCompatActivity {
                 .setPositiveButton(getString(R.string.unban), (dialog, which) -> {
                     applied.unban();
                     updateReputation(applied, UNBAN, edittext.getText().toString());
-                    Settings.firebaseController.updateAccount(applied);
+                    Constants.firebaseController.updateAccount(applied);
 
                     applyBan.setText(BAN);
                     applyBan.setOnClickListener(v -> showDialogBan(applied, applyBan));
@@ -232,7 +232,7 @@ public class ModerationActivity extends AppCompatActivity {
                 .setPositiveButton(getString(R.string.unmute), (dialog, which) -> {
                     applied.unmute();
                     updateReputation(applied, UNMUTE, edittext.getText().toString());
-                    Settings.firebaseController.updateAccount(applied);
+                    Constants.firebaseController.updateAccount(applied);
 
                     applyMute.setText(MUTE);
                     applyMute.setOnClickListener(v -> showDialogMute(applied, applyMute));
@@ -256,7 +256,7 @@ public class ModerationActivity extends AppCompatActivity {
                 .setNegativeButton(getString(R.string.cancel), (dialog, which) -> {})
                 .setPositiveButton(getString(R.string.apply), (dialog, which) -> {
                     updateReputation(applied, WARN, edittext.getText().toString());
-                    Settings.firebaseController.updateAccount(applied);
+                    Constants.firebaseController.updateAccount(applied);
                 })
                 .create();
 
@@ -268,7 +268,7 @@ public class ModerationActivity extends AppCompatActivity {
         String lastReputation = punishable.getReputation().replaceAll(Account.START_REPUTATION, "");
 
         punishable.setReputation(String.format("%stype = %s, time = %s, mod = %s, cause = %s\n\n",
-               lastReputation, action, time, Settings.firebaseController.getFirebaseUser().getDisplayName(), cause));
+               lastReputation, action, time, Constants.firebaseController.getFirebaseUser().getDisplayName(), cause));
     }
 
     private void initGraphics() {
@@ -276,13 +276,5 @@ public class ModerationActivity extends AppCompatActivity {
         accountsView = findViewById(R.id.list_of_accounts);
         loadingLayout = findViewById(R.id.loading);
         searchField = findViewById(R.id.search_field);
-    }
-
-    private void updateBackgroundOrientation() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            moderationLayout.setBackgroundResource(R.drawable.forum_background_v);
-        } else {
-            moderationLayout.setBackgroundResource(R.drawable.forum_background_h);
-        }
     }
 }
